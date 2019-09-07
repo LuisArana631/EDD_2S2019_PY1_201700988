@@ -1,0 +1,70 @@
+# depslib dependency file v1.0
+1567883900 source:e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\main.cpp
+	<iostream>
+	"matrizDispersa.h"
+
+1567879898 source:e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\columna.cpp
+	"columna.h"
+
+1567563061 e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\columna.h
+	<iostream>
+	<stdlib.h>
+	"nodo.h"
+
+1567560760 e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\nodo.h
+	<stdlib.h>
+
+1567562292 source:e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\nodo.cpp
+	"nodo.h"
+
+1567883875 source:e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\cabecera.cpp
+	"cabecera.h"
+
+1567883468 e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\cabecera.h
+	<iostream>
+	<fstream>
+	<stdlib.h>
+	"nodoCabecera.h"
+
+1567805953 e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\nodocabecera.h
+	<stdlib.h>
+	"columna.h"
+
+1567883865 source:e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\matrizdispersa.cpp
+	"matrizDispersa.h"
+
+1567830642 e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\matrizdispersa.h
+	<iostream>
+	<stdlib.h>
+	<fstream>
+	"nodo.h"
+	"cabecera.h"
+	"lateral.h"
+
+1567881087 e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\lateral.h
+	<iostream>
+	<fstream>
+	<stdlib.h>
+	"nodoLateral.h"
+
+1567812593 e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\nodolateral.h
+	<stdlib.h>
+	"fila.h"
+
+1567653992 e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\fila.h
+	<stdlib.h>
+	<iostream>
+	"nodo.h"
+
+1567879975 source:e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\fila.cpp
+	"fila.h"
+
+1567806088 source:e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\nodocabecera.cpp
+	"nodoCabecera.h"
+
+1567813291 source:e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\nodolateral.cpp
+	"nodoLateral.h"
+
+1567884737 source:e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\lateral.cpp
+	"lateral.h"
+
