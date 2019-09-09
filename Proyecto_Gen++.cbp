@@ -34,10 +34,14 @@
 		</Compiler>
 		<Unit filename="cabecera.cpp" />
 		<Unit filename="cabecera.h" />
+		<Unit filename="capa.cpp" />
+		<Unit filename="capa.h" />
 		<Unit filename="columna.cpp" />
 		<Unit filename="columna.h" />
 		<Unit filename="fila.cpp" />
 		<Unit filename="fila.h" />
+		<Unit filename="imagen.cpp" />
+		<Unit filename="imagen.h" />
 		<Unit filename="lateral.cpp" />
 		<Unit filename="lateral.h" />
 		<Unit filename="main.cpp" />

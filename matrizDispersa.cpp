@@ -38,6 +38,7 @@ void matrizDispersa::graficarMatriz(){
 
         if(archivo.fail()){
             cout<<"No se puede abrir el archivo"<<endl;
+            return;
         }
 
         //Genrar el archivo .dot con la matriz
@@ -61,10 +62,108 @@ void matrizDispersa::graficarMatriz(){
             cout<<"No se puede abrir el archivo"<<endl;
         }
 
+        archivo<<"label = \"Matriz Dispersa\";"<<endl;
         archivo<<"}"<<endl;
 
         archivo.close();
         system("dot -Tpng MatrizDispersa.dot -o MatrizDispersa.png");
         system("MatrizDispersa.png");
+    }else{
+        cout<<"Capa se encuentra vacía"<<endl;
+    }
+}
+
+void matrizDispersa::linealizarColumnas(){
+    if(matrizDispersa::indiceX  != NULL){
+        ofstream archivo;
+        archivo.open("LinealizacionColumna.dot", ios::out);
+
+        if(archivo.fail()){
+            cout<<"No se puede abrir el archivo"<<endl;
+            return;
+        }
+
+        archivo<<"digraph LinealizacionColumna{"<<endl;
+        archivo<<"rankdir=LR;"<<endl;
+        archivo<<"node [shape=record];"<<endl;
+
+        nodoCabecera* aux = matrizDispersa::indiceX->inicio;
+
+        archivo<<"nodoInicio[label=\"Inicio\"];"<<endl;
+        archivo<<"nodoInicio -> nodo"<<aux->col->inicio->x<<aux->col->inicio->y<<";"<<endl;
+
+        while(aux!=NULL){
+            nodo* temp = aux->col->inicio;
+            while(temp!=NULL){
+                archivo<<"nodo"<<temp->x<<temp->y<<"[label=\"("<<temp->x<<","<<temp->y<<")"<<temp->R<<"-"<<temp->G<<"-"<<temp->B<<"\"];"<<endl;
+                if(temp->abajo != NULL){
+                    archivo<<"nodo"<<temp->x<<temp->y<<" -> nodo"<<temp->abajo->x<<temp->abajo->y<<";"<<endl;
+                }
+
+                temp = temp -> abajo;
+            }
+            if(aux->siguiente != NULL)
+                archivo<<"nodo"<<aux->col->fin->x<<aux->col->fin->y<<" -> nodo"<<aux->siguiente->col->inicio->x<<aux->siguiente->col->inicio->y<<";"<<endl;
+
+            aux = aux -> siguiente;
+        }
+
+        archivo<<"label = \"Linealizacion por Columnas\";"<<endl;
+        archivo<<"}"<<endl;
+
+        archivo.close();
+
+        system("dot -Tpng LinealizacionColumna.dot -o LinealizacionColumna.png");
+        system("LinealizacionColumna.png");
+    }else{
+        cout<<"Capa se encuentra vacía"<<endl;
+    }
+}
+
+void matrizDispersa::linealizarFilas(){
+    if(matrizDispersa::indiceX  != NULL){
+        ofstream archivo;
+        archivo.open("LinealizacionFila.dot", ios::out);
+
+        if(archivo.fail()){
+            cout<<"No se puede abrir el archivo"<<endl;
+            return;
+        }
+
+        archivo<<"digraph LinealizacionFila{"<<endl;
+        archivo<<"rankdir=LR;"<<endl;
+        archivo<<"node [shape=record];"<<endl;
+
+        nodoLateral* aux = matrizDispersa::indiceY->inicio;
+
+        archivo<<"nodoInicio[label=\"Inicio\"];"<<endl;
+        archivo<<"nodoInicio -> nodo"<<aux->fil->inicio->x<<aux->fil->inicio->y<<";"<<endl;
+
+        while(aux!=NULL){
+            nodo* temp = aux->fil->inicio;
+            while(temp!=NULL){
+                archivo<<"nodo"<<temp->x<<temp->y<<"[label=\"("<<temp->x<<","<<temp->y<<")"<<temp->R<<"-"<<temp->G<<"-"<<temp->B<<"\"];"<<endl;
+                if(temp->derecha != NULL){
+                    archivo<<"nodo"<<temp->x<<temp->y<<" -> nodo"<<temp->derecha->x<<temp->derecha->y<<";"<<endl;
+                }
+
+                temp = temp -> derecha;
+            }
+            if(aux->abajo != NULL)
+                archivo<<"nodo"<<aux->fil->fin->x<<aux->fil->fin->y<<" -> nodo"<<aux->abajo->fil->inicio->x<<aux->abajo->fil->inicio->y<<";"<<endl;
+
+            aux = aux -> abajo;
+        }
+
+        archivo<<"label = \"Linealizacion por Filas\";"<<endl;
+        archivo<<"}"<<endl;
+
+        archivo.close();
+
+        system("dot -Tpng LinealizacionFila.dot -o LinealizacionFila.png");
+        system("LinealizacionFila.png");
+
+    }else{
+        cout<<"Capa se encuentra vacía"<<endl;
     }
 }

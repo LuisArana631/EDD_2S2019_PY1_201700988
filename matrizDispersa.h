@@ -18,6 +18,8 @@ public:
     matrizDispersa();
     void insertar(int, int, int, int, int);
     void graficarMatriz();
+    void linealizarFilas();
+    void linealizarColumnas();
 };
 
 #endif // MATRIZDISPERSA_H

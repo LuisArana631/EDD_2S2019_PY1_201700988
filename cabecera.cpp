@@ -113,6 +113,7 @@ void cabecera::pintarCabecera(){
 
     if(archivo.fail()){
         cout<<"No se puede abrir el archivo"<<endl;
+        return;
     }
 
     nodoCabecera* aux = cabecera::inicio;
@@ -136,24 +137,15 @@ void cabecera::pintarCabecera(){
     aux = cabecera::inicio;
 
     archivo<<"nodoInicio -> nodoC"<<aux->x<<";"<<endl;
+    archivo<<"nodoInicio -> nodoC"<<aux->x<<"[dir=back];"<<endl;
 
     while(aux!=NULL){
         if(aux->siguiente!=NULL){
             archivo<<"nodoC"<<aux->x<<" -> nodoC"<<aux->siguiente->x<<";"<<endl;
+            archivo<<"nodoC"<<aux->x<<" -> nodoC"<<aux->siguiente->x<<"[dir=back];"<<endl;
         }
         aux = aux->siguiente;
     }
-
-    aux = cabecera::fin;
-
-    while(aux!=NULL){
-        if(aux->anterior!=NULL){
-            archivo<<"nodoC"<<aux->x<<"  -> nodoC"<<aux->anterior->x<<";"<<endl;
-        }
-        aux = aux->anterior;
-    }
-
-    archivo<<"nodoC"<<cabecera::inicio->x<<" -> nodoInicio;"<<endl;
 
     archivo.close();
 }
@@ -165,6 +157,7 @@ void cabecera::pintarColumnas(){
 
         if(archivo.fail()){
             cout<<"No se puede abrir el archivo"<<endl;
+            return;
         }
 
         nodoCabecera* aux = cabecera::inicio;
@@ -172,25 +165,17 @@ void cabecera::pintarColumnas(){
         while(aux!=NULL){
             nodo* temp = aux->col->inicio;
 
-            archivo<<"nodoC"<<aux->x<<" -> nodo"<<temp->x<<temp->y<<endl;
+            archivo<<"nodoC"<<aux->x<<" -> nodo"<<temp->x<<temp->y<<";"<<endl;
+            archivo<<"nodoC"<<aux->x<<" -> nodo"<<temp->x<<temp->y<<"[dir=back];"<<endl;
+
 
             while(temp!=NULL){
                 if(temp->abajo!=NULL){
                     archivo<<"nodo"<<temp->x<<temp->y<<" -> nodo"<<temp->abajo->x<<temp->abajo->y<<";"<<endl;
+                    archivo<<"nodo"<<temp->x<<temp->y<<" -> nodo"<<temp->abajo->x<<temp->abajo->y<<"[dir=back];"<<endl;
                 }
                 temp = temp->abajo;
             }
-
-            temp = aux->col->fin;
-
-            while(temp!=NULL){
-                if(temp->arriba!=NULL){
-                    archivo<<"nodo"<<temp->x<<temp->y<<" -> nodo"<<temp->arriba->x<<temp->arriba->y<<";"<<endl;
-                }
-                temp = temp->arriba;
-            }
-
-            archivo<<"nodo"<<aux->col->inicio->x<<aux->col->inicio->y<<" -> nodoC"<<aux->x<<";"<<endl;
 
             aux = aux->siguiente;
         }

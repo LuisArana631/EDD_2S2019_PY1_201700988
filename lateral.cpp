@@ -112,6 +112,7 @@ void lateral::pintarLateral(){
 
     if(archivo.fail()){
         cout<<"No se puede abrir el archivo"<<endl;
+        return;
     }
 
     nodoLateral* aux = lateral::inicio;
@@ -124,24 +125,15 @@ void lateral::pintarLateral(){
     aux = lateral::inicio;
 
     archivo<<"nodoInicio -> nodoF"<<aux->y<<";"<<endl;
+    archivo<<"nodoInicio -> nodoF"<<aux->y<<"[dir=back];"<<endl;
 
     while(aux!=NULL){
         if(aux->abajo!=NULL){
-            archivo<<"nodoF"<<aux->y<<" -> nodoF"<<aux->abajo->y<<";"<<endl;
+            archivo<<"nodoF"<<aux->y<<" -> nodoF"<<aux->abajo->y<<"[dir=back];"<<endl;
         }
         aux = aux -> abajo;
     }
 
-    aux = lateral::fin;
-
-    while(aux!=NULL){
-        if(aux->arriba!=NULL){
-            archivo<<"nodoF"<<aux->y<<" -> nodoF"<<aux->arriba->y<<";"<<endl;
-        }
-        aux = aux -> arriba;
-    }
-
-    archivo<<"nodoF"<<lateral::inicio->y<<" -> nodoInicio;"<<endl;
 
     archivo.close();
 }
@@ -152,6 +144,7 @@ void lateral::pintarFilas(){
 
     if(archivo.fail()){
         cout<<"No se puede abrir el archivo"<<endl;
+        return;
     }
 
     nodoLateral* aux = lateral::inicio;
@@ -178,24 +171,15 @@ void lateral::pintarFilas(){
         temp = aux->fil->inicio;
 
         archivo<<"nodoF"<<aux->y<<" -> nodo"<<temp->x<<temp->y<<";"<<endl;
+        archivo<<"nodoF"<<aux->y<<" -> nodo"<<temp->x<<temp->y<<"[dir=back];"<<endl;
 
         while(temp!=NULL){
             if(temp->derecha!=NULL){
                 archivo<<"nodo"<<temp->x<<temp->y<<" -> nodo"<<temp->derecha->x<<temp->derecha->y<<";"<<endl;
+                archivo<<"nodo"<<temp->x<<temp->y<<" -> nodo"<<temp->derecha->x<<temp->derecha->y<<"[dir=back];"<<endl;
             }
             temp = temp -> derecha;
         }
-
-        temp = aux->fil->fin;
-
-        while(temp!=NULL){
-            if(temp->izquierda!=NULL){
-                archivo<<"nodo"<<temp->x<<temp->y<<" -> nodo"<<temp->izquierda->x<<temp->izquierda->y<<";"<<endl;
-            }
-            temp = temp -> izquierda;
-        }
-
-        archivo<<"nodo"<<aux->fil->inicio->x<<aux->fil->inicio->y<<" -> nodoF"<<aux->y<<";"<<endl;
 
         aux = aux -> abajo;
     }
