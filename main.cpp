@@ -1,6 +1,9 @@
 #include <iostream>
 #include <stdlib.h>
 #include <string.h>
+#include <windows.h>
+#include <ctype.h>
+
 //Pruebas
 #include "matrizDispersa.h"
 #include "imagen.h"
@@ -12,11 +15,13 @@ bool validarEntrada(string);
 void insertarImagen();
 void cargarImagen(string dir);
 
+nodoABB* arbolImagenes;
+
 matrizDispersa* mat =  new matrizDispersa();
 matrizDispersa* mat2 =  new matrizDispersa();
 matrizDispersa* mat3 = new matrizDispersa();
-imagen* img = new imagen("LetraR");
-imagen* img2 = new imagen("Cuadro");
+imagen* img = new imagen("R",30,30,5,5);
+imagen* img2 = new imagen("Cuadro",30,30,5,5);
 nodoABB* arbol;
 
 void menu(){
@@ -46,7 +51,9 @@ void menu(){
             if(!entradaValida)
                 throw Opcion;
         }catch(string e){
-            cout<<"La opcion "<<e<<" no es valida."<<endl;
+            cout<<"---------------Opcion no existe---------------"<<endl;
+            cout<<"----------------------------------------------"<<endl;
+            Sleep(500);
         }
     }
 
@@ -56,7 +63,6 @@ void menu(){
         case 1:
             //Insert image
             insertarImagen();
-            menu();
             break;
         case 2:
             //Select image
@@ -66,9 +72,9 @@ void menu(){
             mat->insertar(3,10,102,255,102);
             mat->insertar(4,11,102,255,102);
 
-            mat->graficarMatriz();
-            mat->linealizarColumnas();
-            mat->linealizarFilas();
+            //mat->graficarMatriz();
+            //mat->linealizarColumnas();
+            //mat->linealizarFilas();
 
             cout<<"-------------------------------"<<endl;
 
@@ -89,7 +95,7 @@ void menu(){
             mat2->insertar(4,5,102,255,102);
             mat2->insertar(4,6,102,255,102);
 
-            mat2->graficarMatriz();
+            //mat2->graficarMatriz();
 
             cout<<"-------------------------------"<<endl;
 
@@ -110,14 +116,17 @@ void menu(){
             img2->insertarCapa(mat3, 1);
 
             arbol->insertar(arbol,"R",5,img);
-            arbol->insertar(arbol,"Cuadro",1,img2);
+            arbol->insertar(arbol,"Cuadro",3,img2);
+            arbol->insertar(arbol,"Bebesita",1,img);
 
             arbol->graficarArbol(arbol);
 
             arbol->listaCapas->mostrarCapas();
+            //arbol->listaCapas->inicio->matriz->graficarMatriz();
             cout<<"-------------------------------"<<endl;
-            arbol->listaCapas->inicio->matriz->graficarMatriz();
-
+            arbol->graficarInOrden(arbol);
+            //arbol->graficarPreOrden(arbol);
+            //arbol->graficarPostOrden(arbol);
             break;
         case 3:
             //Apply filters
@@ -143,6 +152,7 @@ void menu(){
             //Cuando es un numero incorrecto
             cout<<"---------------Opcion no existe---------------"<<endl;
             cout<<"----------------------------------------------"<<endl;
+            Sleep(500);
             menu();
     }
 }
@@ -169,7 +179,8 @@ bool validarEntrada(string Opcion){
 }
 
 void insertarImagen(){
-    string dir;
+    ifstream archivo;
+    string dir, texto, capas, config;
 
     system("cls");
     cout<<"----------------------------------------------"<<endl;
@@ -179,6 +190,198 @@ void insertarImagen(){
     cout<<"----------------------------------------------"<<endl;
     cout<<"Direccion del archivo: ";
     getline(cin,dir);
+    cout<<"----------------------------------------------"<<endl;
+
+    //Cargando archivo inicial
+    archivo.open(dir.c_str(),ios::in);
+
+    if(archivo.fail()){
+        cout<<"No se pudo abrir archivo inicial."<<endl;
+        cout<<"----------------------------------------------"<<endl;
+        Sleep(700);
+        return;
+    }else{
+        cout<<"Cargando archivo inicial..."<<endl;
+        cout<<"----------------------------------------------"<<endl;
+    }
+
+    //Variables del archivo Inicial
+    int lineas = 0;
+    string dirCapa = "";
+    string nameCapa = "";
+    string numCapa = "";
+    bool insertCapa = false;
+    bool insertNum = true;
+
+    //Extraer datos del archivo inicial
+    while(!archivo.eof()){
+        getline(archivo,texto);
+        if(lineas != 0){
+            int n = texto.length();
+            char caracteres[n+2];
+            strcpy(caracteres, texto.c_str());
+
+            for(int i=0; i<n+1; i++){
+                if(isdigit(caracteres[i])){
+                    if(insertNum){
+                        numCapa = numCapa + caracteres[i];
+                    }else if(insertCapa){
+                        nameCapa = nameCapa + caracteres[i];
+                    }
+                }else if(isalpha(caracteres[i]) || caracteres[i]  == 46 || caracteres[i]  == 95 || caracteres[i]  == 45){
+                    nameCapa = nameCapa  + caracteres[i];
+                }else if(caracteres[i] == 44 || caracteres[i] == 59 || caracteres[i] == 00){
+                    if(insertNum){
+                        insertCapa = true;
+                        insertNum = false;
+                    }else if(insertCapa){
+                        if(numCapa == "0"){
+                            config = nameCapa;
+                        }else{
+                            capas = capas + numCapa + "," + nameCapa + ";";
+                        }
+                            numCapa = "";
+                            nameCapa = "";
+                            insertCapa = false;
+                            insertNum = true;
+                    }
+                }else{
+                    //Nada
+                }
+            }
+        }
+        lineas ++;
+    }
+
+    archivo.close();
+
+    cout<<"Archivo inicial cargado con exito."<<endl;
+    cout<<"----------------------------------------------"<<endl;
+
+
+
+    //Extraer valores de config
+    archivo.open(config.c_str(),ios::in);
+
+    if(archivo.fail()){
+        cout<<"No se pudo abrir archivo de configuracion."<<endl;
+        cout<<"----------------------------------------------"<<endl;
+        Sleep(700);
+        return;
+    }else{
+        cout<<"Cargando configuracion de la imagen..."<<endl;
+        cout<<"----------------------------------------------"<<endl;
+    }
+
+    int heightImagen = 0;
+    int widthImagen = 0;
+    int heightPixel = 0;
+    int widthPixel = 0;
+
+    lineas = 0;
+    string Tconfig = "";
+    string Tvalue = "";
+    bool Bconfig = true;
+    bool Bvalue = false;
+
+    while(!archivo.eof()){
+        getline(archivo,texto);
+        if(lineas != 0){
+            int n = texto.length();
+            char caracteres[n+2];
+            strcpy(caracteres, texto.c_str());
+
+            for(int i=0; i<n+1; i++){
+                if(isalpha(caracteres[i]) || caracteres[i] == 95){
+                    caracteres[i] = tolower(caracteres[i]);
+                    Tconfig = Tconfig + caracteres[i];
+                }else if(isdigit(caracteres[i])){
+                    Tvalue = Tvalue + caracteres[i];
+                }else if(caracteres[i] == 44 || caracteres[i] == 59 || caracteres[i] == 00){
+                    if(Bconfig){
+                        Bvalue = true;
+                        Bconfig = false;
+                    }else if(Bvalue){
+                        if(Tconfig == "image_width"){
+                            widthImagen = atoi(Tvalue.c_str());
+                        }else if(Tconfig == "image_height"){
+                            heightImagen = atoi(Tvalue.c_str());
+                        }else if(Tconfig == "pixel_width"){
+                            widthPixel = atoi(Tvalue.c_str());
+                        }else if(Tconfig == "pixel_height"){
+                            heightPixel = atoi(Tvalue.c_str());
+                        }
+                        Tconfig = "";
+                        Tvalue = "";
+                        Bvalue = false;
+                        Bconfig = true;
+                    }
+                }else{
+                    //Nada
+                }
+            }
+        }
+        lineas++;
+    }
+
+    archivo.close();
+
+    int valNombreImg = 0;
+    int auxValImg = 0;
+    string  nombreImg = "";
+    int r = dir.length();
+    char nombreImgC[r+1];
+    strcpy(nombreImgC, dir.c_str());
+
+    for(int i=0; i<r; i++){
+        if(nombreImgC[i]!=46){
+            nombreImg = nombreImg + nombreImgC[i];
+            auxValImg = nombreImgC[i];
+            valNombreImg = valNombreImg + auxValImg;
+        }else{
+            break;
+        }
+    }
+
+    imagen* nueva = new imagen(nombreImg,heightImagen, widthImagen, heightPixel, widthPixel);
+    arbolImagenes->insertar(arbolImagenes, nombreImg, valNombreImg, nueva);
+
+    cout<<"Width Image: "<<widthImagen<<endl;
+    cout<<"Height Image: "<<heightImagen<<endl;
+    cout<<"Width Pixel: "<<widthPixel<<endl;
+    cout<<"Height Pixel: "<<heightPixel<<endl;
+    cout<<"----------------------------------------------"<<endl;
+    cout<<"Archivo configuracion cargado con exito."<<endl;
+    cout<<"----------------------------------------------"<<endl;
+
+    cout<<"Texto capas: "<<capas<<endl;
+
+    //Cargar las capas
+    int m = capas.length();
+    char capasC[m+1];
+    strcpy(capasC, capas.c_str());
+    string direccionCapa = "";
+    int x = 0;
+    int y = 0;
+    int z = 0;
+    int R = 0;
+    int G = 0;
+    int B = 0;
+    bool BnumCapa = true;
+    bool BdirCapa = false;
+
+    for(int i=0; i<m; i++){
+        if(isalpha(capasC[i]) || capasC[i]  == 46 || capasC[i]  == 95 || capasC[i]  == 45 || isdigit(capasC[i])){
+            direccionCapa = direccionCapa + capasC[i];
+        }else if(capasC[i] == 44){
+            if(BnumCapa)
+        }else if(capasC[i] == 59){
+
+        }else{
+            //Nada
+        }
+    }
+
 }
 
 int main()

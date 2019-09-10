@@ -2,10 +2,14 @@
 
 using namespace std;
 
-imagen::imagen(string id){
+imagen::imagen(string id, int imageHeight, int imageWidth, int pixelHeight, int pixelWidth){
     imagen::id = id;
     imagen::inicio  = NULL;
     imagen::fin = NULL;
+    imagen::imageWidth = imageWidth;
+    imagen::imageHeight = imageHeight;
+    imagen::pixelHeight = pixelHeight;
+    imagen::pixelWidth = pixelWidth;
 }
 
 bool imagen::vacia(){
@@ -34,5 +38,7 @@ void imagen::mostrarCapas(){
         aux = aux -> siguiente;
     }
 }
+
+
 
 

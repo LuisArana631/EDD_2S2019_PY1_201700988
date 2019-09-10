@@ -19,11 +19,14 @@ public:
     nodoABB* crearImagen(string, imagen*&, int);
     void insertar(nodoABB*&, string, int, imagen*&);
     void graficarArbol(nodoABB*);
-    nodoABB* extraerImagen(nodoABB*, int);
-    void graficarInOrden(nodoABB*);
-    void graficarPreOrden(nodoABB*);
-    void graficarPostOrden(nodoABB*);
     void mostrarArbol(nodoABB*);
+    void graficarInOrden(nodoABB*);
+    void mostrarInOrden(nodoABB*, nodoABB*, int);
+    void graficarPreOrden(nodoABB*);
+    void mostrarPreOrden(nodoABB*, nodoABB*);
+    void graficarPostOrden(nodoABB*);
+    void mostrarPostOrden(nodoABB*, nodoABB*);
+    nodoABB* extraerImagen(nodoABB*, int);
 };
 
 #endif // NODOABB_H

@@ -49,6 +49,8 @@
 		<Unit filename="matrizDispersa.h" />
 		<Unit filename="nodo.cpp" />
 		<Unit filename="nodo.h" />
+		<Unit filename="nodoABB.cpp" />
+		<Unit filename="nodoABB.h" />
 		<Unit filename="nodoCabecera.cpp" />
 		<Unit filename="nodoCabecera.h" />
 		<Unit filename="nodoLateral.cpp" />

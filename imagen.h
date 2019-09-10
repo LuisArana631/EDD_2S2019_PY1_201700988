@@ -11,10 +11,14 @@ using namespace std;
 class imagen{
 public:
     string id;
+    int imageHeight;
+    int imageWidth;
+    int pixelHeight;
+    int pixelWidth;
     capa* inicio;
     capa* fin;
 
-    imagen(string);
+    imagen(string, int, int, int, int);
     bool vacia();
     void insertarCapa(matrizDispersa*, int);
     int valorMaximo();
