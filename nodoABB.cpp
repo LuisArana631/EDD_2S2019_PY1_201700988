@@ -77,7 +77,7 @@ void nodoABB::mostrarArbol(nodoABB* arbol){
             return;
         }
 
-        archivo<<"node"<<arbol->nombre<<"[label = \"<f0> |<f1> "<<arbol->nombre<<"|<f2> \"];"<<endl;
+        archivo<<"node"<<arbol->nombre<<"[label = \"<f0> |<f1> "<<arbol->nombre<<"\\nimage, h: "<<arbol->listaCapas->imageHeight<<", w: "<<arbol->listaCapas->imageWidth<<"\\npixel, h: "<<arbol->listaCapas->pixelHeight<<", w: "<<arbol->listaCapas->pixelHeight<<"|<f2> \"];"<<endl;
 
         if(arbol->izquierda!=NULL){
             archivo<<"\"node"<<arbol->nombre<<"\":f0 -> \"node"<<arbol->izquierda->nombre<<"\":f1;"<<endl;
@@ -294,6 +294,43 @@ void nodoABB::mostrarPostOrden(nodoABB* arbol, nodoABB* inicio){
 
     }else{
         return;
+    }
+}
+
+void nodoABB::mostrarListaArbol(nodoABB* arbol){
+    if(arbol == NULL){
+        return;
+    }else{
+        mostrarListaArbol(arbol->izquierda);
+        cout<<" + "<<arbol->nombre<<endl;
+        mostrarListaArbol(arbol->derecha);
+    }
+}
+
+bool nodoABB::existeImagen(nodoABB* arbol, int valNombre){
+    if(arbol == NULL){
+        return false;
+    }else if(arbol->valNombre == valNombre){
+        cout<<"Imagen encontrada"<<endl;
+        return true;
+    }else if(valNombre < arbol->valNombre){
+        return existeImagen(arbol->izquierda, valNombre);
+    }else{
+        return existeImagen(arbol->derecha, valNombre);
+    }
+}
+
+nodoABB* nodoABB::extraerImagen(nodoABB* arbol, int valNombre){
+    if(arbol == NULL){
+        nodoABB* ret = NULL;
+        return ret;
+    }else if(arbol->valNombre == valNombre){
+        cout<<"Imagen encontrada"<<endl;
+        return arbol;
+    }else if(valNombre < arbol->valNombre){
+        return extraerImagen(arbol->izquierda, valNombre);
+    }else{
+        return extraerImagen(arbol->derecha, valNombre);
     }
 }
 

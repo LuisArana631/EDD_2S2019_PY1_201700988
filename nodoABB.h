@@ -26,6 +26,8 @@ public:
     void mostrarPreOrden(nodoABB*, nodoABB*);
     void graficarPostOrden(nodoABB*);
     void mostrarPostOrden(nodoABB*, nodoABB*);
+    void mostrarListaArbol(nodoABB*);
+    bool existeImagen(nodoABB*, int);
     nodoABB* extraerImagen(nodoABB*, int);
 };
 

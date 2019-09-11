@@ -14,16 +14,16 @@ using namespace std;
 void menu();
 bool validarEntrada(string);
 void insertarImagen();
-void cargarImagen(string dir);
+void menuReportes();
+void traversalReport();
+void selectImage();
+void selectCapa();
+void linearReport();
 
+//Estructuras globales
 nodoABB* arbolImagenes;
-
-matrizDispersa* mat =  new matrizDispersa();
-matrizDispersa* mat2 =  new matrizDispersa();
-matrizDispersa* mat3 = new matrizDispersa();
-imagen* img = new imagen("R",30,30,5,5);
-imagen* img2 = new imagen("Cuadro",30,30,5,5);
-nodoABB* arbol;
+imagen* trabajo = NULL;
+capa* capaTrabajar;
 
 void menu(){
     string Opcion;
@@ -68,67 +68,8 @@ void menu(){
             break;
         case 2:
             //Select image
-            mat->insertar(2,7,102,255,102);
-            mat->insertar(3,7,102,255,102);
-            mat->insertar(2,9,102,255,102);
-            mat->insertar(3,10,102,255,102);
-            mat->insertar(4,11,102,255,102);
-
-            //mat->graficarMatriz();
-            //mat->linealizarColumnas();
-            //mat->linealizarFilas();
-
-            cout<<"-------------------------------"<<endl;
-
-            mat2->insertar(1,2,102,255,102);
-            mat2->insertar(1,3,102,255,102);
-            mat2->insertar(1,4,102,255,102);
-            mat2->insertar(1,5,102,255,102);
-            mat2->insertar(1,6,102,255,102);
-            mat2->insertar(1,7,102,255,102);
-            mat2->insertar(1,8,102,255,102);
-            mat2->insertar(1,9,102,255,102);
-            mat2->insertar(1,10,102,255,102);
-            mat2->insertar(1,11,102,255,102);
-            mat2->insertar(2,2,102,255,102);
-            mat2->insertar(3,2,102,255,102);
-            mat2->insertar(4,3,102,255,102);
-            mat2->insertar(4,4,102,255,102);
-            mat2->insertar(4,5,102,255,102);
-            mat2->insertar(4,6,102,255,102);
-
-            //mat2->graficarMatriz();
-
-            cout<<"-------------------------------"<<endl;
-
-            mat3->insertar(1,1,102,255,102);
-            mat3->insertar(1,2,102,255,102);
-            mat3->insertar(1,3,102,255,102);
-            mat3->insertar(2,1,102,255,102);
-            mat3->insertar(2,2,102,255,102);
-            mat3->insertar(2,3,102,255,102);
-            mat3->insertar(3,1,102,255,102);
-            mat3->insertar(3,2,102,255,102);
-            mat3->insertar(3,3,102,255,102);
-
-            cout<<"-------------------------------"<<endl;
-
-            img->insertarCapa(mat, 1);
-            img->insertarCapa(mat2, 2);
-            img2->insertarCapa(mat3, 1);
-
-            arbol->insertar(arbol,"R",5,img);
-            arbol->insertar(arbol,"Cuadro",3,img2);
-            arbol->insertar(arbol,"Bebesita",1,img);
-
-            arbol->graficarArbol(arbol);
-
-            arbol->listaCapas->mostrarCapas();
-            //arbol->listaCapas->inicio->matriz->graficarMatriz();
-            cout<<"-------------------------------"<<endl;
-            arbol->graficarInOrden(arbol);
-            //arbol->graficarPreOrden(arbol);
-            //arbol->graficarPostOrden(arbol);
+            selectImage();
+            menu();
             break;
         case 3:
             //Apply filters
@@ -144,7 +85,8 @@ void menu(){
             break;
         case 6:
             //Reports
-
+            menuReportes();
+            menu();
             break;
         case 7:
             //Exit
@@ -157,6 +99,15 @@ void menu(){
             Sleep(500);
             menu();
     }
+}
+
+bool validarOpcion(string Opcion){
+    for(int i=0; i<Opcion.length(); i++){
+        if(!isalpha(Opcion[i])){
+            return false;
+        }
+    }
+    return true;
 }
 
 bool validarEntrada(string Opcion){
@@ -200,7 +151,8 @@ void insertarImagen(){
     if(archivo.fail()){
         cout<<"No se pudo abrir archivo inicial."<<endl;
         cout<<"----------------------------------------------"<<endl;
-        Sleep(700);
+        cout<<"Pulsa una tecla para continuar."<<endl;
+        getch();
         return;
     }else{
         cout<<"Cargando archivo inicial..."<<endl;
@@ -268,7 +220,8 @@ void insertarImagen(){
     if(archivo.fail()){
         cout<<"No se pudo abrir archivo de configuracion."<<endl;
         cout<<"----------------------------------------------"<<endl;
-        Sleep(700);
+        cout<<"Pulsa una tecla para continuar."<<endl;
+        getch();
         return;
     }else{
         cout<<"Cargando configuracion de la imagen..."<<endl;
@@ -329,7 +282,6 @@ void insertarImagen(){
     archivo.close();
 
     int valNombreImg = 0;
-    int auxValImg = 0;
     string  nombreImg = "";
     int r = dir.length();
     char nombreImgC[r+1];
@@ -338,12 +290,12 @@ void insertarImagen(){
     for(int i=0; i<r; i++){
         if(nombreImgC[i]!=46){
             nombreImg = nombreImg + nombreImgC[i];
-            auxValImg = nombreImgC[i];
-            valNombreImg = valNombreImg + auxValImg;
         }else{
             break;
         }
     }
+
+    valNombreImg =  nombreImg[0];
 
     imagen* nueva = new imagen(nombreImg,heightImagen, widthImagen, heightPixel, widthPixel);
     arbolImagenes->insertar(arbolImagenes, nombreImg, valNombreImg, nueva);
@@ -363,6 +315,7 @@ void insertarImagen(){
     strcpy(capasC, capas.c_str());
     string direccionCapa = "";
     string tNumCapa = "";
+    string nombreCapa = "";
     //Variables de Carga
     int x = 0;
     int y = 0;
@@ -372,8 +325,8 @@ void insertarImagen(){
     int G = 0;
     int B = 0;
     //Variables de Recorrido
-    int nCol = 1;
-    int nFil = 1;
+    int nCol = 0;
+    int nFil = 0;
     bool BnumCapa = true;
     bool BdirCapa = false;
     bool BR = true;
@@ -383,6 +336,9 @@ void insertarImagen(){
     //Lectura de cada archivo
     for(int i=0; i<m; i++){
         if(isalpha(capasC[i]) || capasC[i]  == 46 || capasC[i]  == 95 || capasC[i]  == 45 || isdigit(capasC[i])){
+            if(capasC[i]  == 46){
+                nombreCapa = direccionCapa;
+            }
             if(BnumCapa){
                 tNumCapa = tNumCapa + capas[i];
             }else{
@@ -399,7 +355,9 @@ void insertarImagen(){
             if(archivo.fail()){
                 cout<<"No se pudo abrir "<<direccionCapa<<"."<<endl;
                 cout<<"----------------------------------------------"<<endl;
-                Sleep(700);
+                cout<<"Pulsa una tecla para continuar."<<endl;
+
+                getch();
                 return;
             }else{
                 cout<<"Cargando la capa "<<direccionCapa<<"..."<<endl;
@@ -446,7 +404,7 @@ void insertarImagen(){
                             BR = true;
                         }
                         nFil++;
-                        nCol = 1;
+                        nCol = 0;
                     }
 
                     //Insercion de los nodos
@@ -482,7 +440,7 @@ void insertarImagen(){
 
             }
 
-            nueva->insertarCapa(newMatriz,z);
+            nueva->insertarCapa(newMatriz,z,nombreCapa);
 
             cout<<"----------------------------------------------"<<endl;
             cout<<direccionCapa<<" cargado con exito."<<endl;
@@ -494,8 +452,8 @@ void insertarImagen(){
             tNumCapa = "";
             BnumCapa = true;
             BdirCapa = false;
-            nCol = 1;
-            nFil = 1;
+            nCol = 0;
+            nFil = 0;
         }else{
             //Nada
         }
@@ -506,11 +464,329 @@ void insertarImagen(){
 }
 
 void menuReportes(){
+    string Opcion;
+    bool entradaValida = false;
+
+    while(!entradaValida){
+        try{
+            system("cls");
+            cout<<"----------------------------------------------"<<endl;
+            cout<<"-------------------PHOTGEN++------------------"<<endl;
+            cout<<"----------------------------------------------"<<endl;
+            cout<<"--------------------REPORTS-------------------"<<endl;
+            cout<<"----------------------------------------------"<<endl;
+            cout<<"1 - Imported images report."<<endl;
+            cout<<"2 - Image layer report."<<endl;
+            cout<<"3 - Linear matrix report."<<endl;
+            cout<<"4 - Traversal report."<<endl;
+            cout<<"5 - Filters Report."<<endl;
+            cout<<"6 - Return."<<endl;
+            cout<<"----------------------------------------------"<<endl;
+            cout<<"Option: ";
+            getline(cin,Opcion);
+            entradaValida = validarEntrada(Opcion);
+            cout<<"----------------------------------------------"<<endl;
+            if(!entradaValida)
+                throw Opcion;
+        }catch(string e){
+            cout<<"---------------Opcion no existe---------------"<<endl;
+            cout<<"----------------------------------------------"<<endl;
+            Sleep(500);
+        }
+    }
+
+    int OpcionEntera = atoi(Opcion.c_str());
+
+    switch(OpcionEntera){
+        case 1:
+            //Imported images report
+            arbolImagenes ->graficarArbol(arbolImagenes);
+            menuReportes();
+            break;
+        case 2:
+            //Image layer report
+            selectImage();
+            selectCapa();
+            if(capaTrabajar!=NULL)
+                capaTrabajar->matriz->graficarMatriz();
+            menuReportes();
+            break;
+        case 3:
+            //Linear matrix report
+            selectImage();
+            selectCapa();
+            linearReport();
+            menuReportes();
+            break;
+        case 4:
+            //Traversal report
+            traversalReport();
+            menuReportes();
+            break;
+        case 5:
+            //Filters report
+
+            break;
+        case 6:
+            //Return
+            return;
+            break;
+        default:
+            //Cuando es un numero incorrecto
+            cout<<"---------------Opcion no existe---------------"<<endl;
+            cout<<"----------------------------------------------"<<endl;
+            Sleep(500);
+            menuReportes();
+            break;
+    }
 
 }
 
-int main()
-{
+void traversalReport(){
+    string Opcion;
+    bool entradaValida = false;
+
+    while(!entradaValida){
+        try{
+            system("cls");
+            cout<<"----------------------------------------------"<<endl;
+            cout<<"-------------------PHOTGEN++------------------"<<endl;
+            cout<<"----------------------------------------------"<<endl;
+            cout<<"---------------TRAVERSAL REPORT---------------"<<endl;
+            cout<<"----------------------------------------------"<<endl;
+            cout<<"1 - Inorder traversal."<<endl;
+            cout<<"2 - Postorder traversal."<<endl;
+            cout<<"3 - Preorder traversal."<<endl;
+            cout<<"4 - Return."<<endl;
+            cout<<"----------------------------------------------"<<endl;
+            cout<<"Option: ";
+            getline(cin,Opcion);
+            entradaValida = validarEntrada(Opcion);
+            cout<<"----------------------------------------------"<<endl;
+            if(!entradaValida)
+                throw Opcion;
+        }catch(string e){
+            cout<<"---------------Opcion no existe---------------"<<endl;
+            cout<<"----------------------------------------------"<<endl;
+            Sleep(500);
+        }
+    }
+
+        int OpcionEntera = atoi(Opcion.c_str());
+
+        switch(OpcionEntera){
+            case 1:
+                //Inorden  traversal
+                arbolImagenes->graficarInOrden(arbolImagenes);
+                traversalReport();
+                break;
+            case 2:
+                //Postorder traversal
+                arbolImagenes->graficarPostOrden(arbolImagenes);
+                traversalReport();
+                break;
+            case 3:
+                //Preorder traversal
+                arbolImagenes->graficarPreOrden(arbolImagenes);
+                traversalReport();
+                break;
+            case 4:
+                //Return
+                return;
+                break;
+            default:
+                //Cuando es un numero incorrecto
+                cout<<"---------------Opcion no existe---------------"<<endl;
+                cout<<"----------------------------------------------"<<endl;
+                Sleep(500);
+                traversalReport();
+                break;
+        }
+}
+
+void selectImage(){
+    string Opcion;
+    bool opcionValida = false;
+
+    while(!opcionValida){
+        try{
+            system("cls");
+            cout<<"----------------------------------------------"<<endl;
+            cout<<"-------------------PHOTGEN++------------------"<<endl;
+            cout<<"----------------------------------------------"<<endl;
+            cout<<"-----------------SELECT IMAGE-----------------"<<endl;
+            cout<<"----------------------------------------------"<<endl;
+            if(arbolImagenes!=NULL){
+                arbolImagenes->mostrarListaArbol(arbolImagenes);
+                cout<<"----------------------------------------------"<<endl;
+                cout<<"Ingresa el nombre de la imagen: ";
+                getline(cin,Opcion);
+                opcionValida = validarOpcion(Opcion);
+                cout<<"----------------------------------------------"<<endl;
+                if(!opcionValida)
+                    throw Opcion;
+            }else{
+                cout<<"No hay imagenes cargadas aun, carga un archivo."<<endl;
+                cout<<"----------------------------------------------"<<endl;
+                cout<<"Pulsa una tecla para continuar."<<endl;
+                getch();
+                return;
+            }
+        }catch(string e){
+            cout<<"---------------Opcion no existe---------------"<<endl;
+            cout<<"----------------------------------------------"<<endl;
+            Sleep(500);
+        }
+    }
+
+    int valNumAux = 0;
+    int steps = Opcion.length();
+    char cOpcion[steps+1];
+    strcpy(cOpcion,Opcion.c_str());
+    valNumAux = cOpcion[0];
+
+    nodoABB* aux = arbolImagenes->extraerImagen(arbolImagenes,valNumAux);
+
+    if(aux == NULL){
+        cout<<"---------------Opcion no existe---------------"<<endl;
+        cout<<"----------------------------------------------"<<endl;
+        cout<<"Pulsa una tecla para continuar."<<endl;
+        getch();
+        return;
+    }
+
+    trabajo = aux->listaCapas;
+
+    cout<<"----------------------------------------------"<<endl;
+    cout<<"Pulsa una tecla para continuar."<<endl;
+
+    getch();
+}
+
+void selectCapa(){
+    string Opcion;
+    capaTrabajar = NULL;
+
+    bool opcionValida = false;
+
+    while(!opcionValida){
+        try{
+            system("cls");
+            cout<<"----------------------------------------------"<<endl;
+            cout<<"-------------------PHOTGEN++------------------"<<endl;
+            cout<<"----------------------------------------------"<<endl;
+            cout<<"------------------SELECT CAP------------------"<<endl;
+            cout<<"----------------------------------------------"<<endl;
+            if(trabajo!=NULL){
+                trabajo->mostrarCapas();
+                cout<<"----------------------------------------------"<<endl;
+                cout<<"Selecciona la capa: ";
+                getline(cin,Opcion);
+                opcionValida = validarEntrada(Opcion);
+                cout<<"----------------------------------------------"<<endl;
+                if(!opcionValida)
+                    throw Opcion;
+            }else{
+                cout<<"No existen capas."<<endl;
+                cout<<"----------------------------------------------"<<endl;
+                cout<<"Pulsa una tecla para continuar."<<endl;
+                getch();
+                return;
+            }
+
+        }catch(string e){
+            cout<<"---------------Opcion no existe---------------"<<endl;
+            cout<<"----------------------------------------------"<<endl;
+            Sleep(500);
+        }
+    }
+
+    int capaSelect = atoi(Opcion.c_str());
+
+    capaTrabajar = trabajo->extraerCapa(capaSelect);
+
+    if(capaTrabajar==NULL){
+        cout<<"---------------Opcion no existe---------------"<<endl;
+        cout<<"----------------------------------------------"<<endl;
+        cout<<"Pulsa una tecla para continuar."<<endl;
+        getch();
+        return;
+    }
+
+    cout<<"----------------------------------------------"<<endl;
+    cout<<"Pulsa una tecla para continuar."<<endl;
+
+    getch();
+
+}
+
+void linearReport(){
+    string Opcion;
+    bool entradaValida = false;
+
+    while(!entradaValida){
+        try{
+            system("cls");
+            cout<<"----------------------------------------------"<<endl;
+            cout<<"-------------------PHOTGEN++------------------"<<endl;
+            cout<<"----------------------------------------------"<<endl;
+            cout<<"-----------------LINEAR REPORT----------------"<<endl;
+            cout<<"----------------------------------------------"<<endl;
+            cout<<"1 - Linearize by column."<<endl;
+            cout<<"2 - Linearize by row."<<endl;
+            cout<<"3 - Return."<<endl;
+            cout<<"----------------------------------------------"<<endl;
+            cout<<"Option: ";
+            getline(cin,Opcion);
+            entradaValida = validarEntrada(Opcion);
+            cout<<"----------------------------------------------"<<endl;
+            if(!entradaValida)
+                throw Opcion;
+        }catch(string e){
+            cout<<"---------------Opcion no existe---------------"<<endl;
+            cout<<"----------------------------------------------"<<endl;
+            Sleep(500);
+        }
+    }
+
+    int OpcionEntera = atoi(Opcion.c_str());
+
+    switch(OpcionEntera){
+            case 1:
+                //Column
+                if(capaTrabajar!=NULL){
+                    capaTrabajar->matriz->linealizarColumnas();
+                }else{
+                    cout<<"No se encontro la capa."<<endl;
+                    return;
+                }
+                linearReport();
+                break;
+            case 2:
+                //Row
+                if(capaTrabajar!=NULL){
+                    capaTrabajar->matriz->linealizarFilas();
+                }else{
+                    cout<<"No se encontro la capa."<<endl;
+                    return;
+                }
+                linearReport();
+                break;
+            case 3:
+                //Return
+                return;
+                break;
+            default:
+                //Cuando es un numero incorrecto
+                cout<<"---------------Opcion no existe---------------"<<endl;
+                cout<<"----------------------------------------------"<<endl;
+                Sleep(500);
+                traversalReport();
+                break;
+        }
+}
+
+int main(){
     menu();
     return 0;
 }

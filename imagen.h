@@ -20,9 +20,10 @@ public:
 
     imagen(string, int, int, int, int);
     bool vacia();
-    void insertarCapa(matrizDispersa*, int);
+    void insertarCapa(matrizDispersa*, int, string);
     int valorMaximo();
     void mostrarCapas();
+    capa* extraerCapa(int);
 };
 
 #endif // IMAGEN_H

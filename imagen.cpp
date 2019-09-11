@@ -16,8 +16,8 @@ bool imagen::vacia(){
     return (imagen::inicio==NULL)? true:false;
 }
 
-void imagen::insertarCapa(matrizDispersa* insertar, int val){
-    capa* nueva = new capa(insertar, val);
+void imagen::insertarCapa(matrizDispersa* insertar, int val, string nombre){
+    capa* nueva = new capa(insertar, val, nombre);
     if(imagen::vacia()){
         inicio = fin = nueva;
     }else{
@@ -34,11 +34,20 @@ int imagen::valorMaximo(){
 void imagen::mostrarCapas(){
     capa* aux = imagen::inicio;
     while(aux!=NULL){
-        cout<<"Z: "<<aux->z<<endl;
+        cout<<aux->z<<" - "<<aux->nombre<<endl;
         aux = aux -> siguiente;
     }
 }
 
-
+capa* imagen::extraerCapa(int z){
+    capa* aux = imagen::inicio;
+    while(aux!=NULL){
+        if(aux->z == z){
+            return aux;
+        }
+        aux = aux -> siguiente;
+    }
+    return false;
+}
 
 

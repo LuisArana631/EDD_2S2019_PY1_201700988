@@ -20,10 +20,10 @@
 1567560760 e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\nodo.h
 	<stdlib.h>
 
-1567960873 source:e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\capa.cpp
+1568236335 source:e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\capa.cpp
 	"capa.h"
 
-1567960831 e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\capa.h
+1568236395 e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\capa.h
 	<iostream>
 	<stdlib.h>
 	"matrizDispersa.h"
@@ -57,10 +57,10 @@
 1567879975 source:e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\fila.cpp
 	"fila.h"
 
-1568157947 source:e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\imagen.cpp
+1568236366 source:e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\imagen.cpp
 	"imagen.h"
 
-1568069219 e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\imagen.h
+1568236411 e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\imagen.h
 	<iostream>
 	<stdlib.h>
 	<string.h>
@@ -69,7 +69,7 @@
 1567995168 source:e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\lateral.cpp
 	"lateral.h"
 
-1568162810 source:e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\main.cpp
+1568242361 source:e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\main.cpp
 	<iostream>
 	<stdlib.h>
 	<string.h>
@@ -80,7 +80,7 @@
 	"imagen.h"
 	"nodoABB.h"
 
-1568067961 e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\nodoabb.h
+1568242486 e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\nodoabb.h
 	<iostream>
 	<stdlib.h>
 	<string.h>
@@ -98,6 +98,6 @@
 1567813291 source:e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\nodolateral.cpp
 	"nodoLateral.h"
 
-1568068967 source:e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\nodoabb.cpp
+1568241031 source:e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\nodoabb.cpp
 	"nodoABB.h"
 
