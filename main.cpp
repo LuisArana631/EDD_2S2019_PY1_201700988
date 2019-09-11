@@ -1,6 +1,7 @@
 #include <iostream>
 #include <stdlib.h>
 #include <string.h>
+#include <conio.h>
 #include <windows.h>
 #include <ctype.h>
 
@@ -63,6 +64,7 @@ void menu(){
         case 1:
             //Insert image
             insertarImagen();
+            menu();
             break;
         case 2:
             //Select image
@@ -354,33 +356,156 @@ void insertarImagen(){
     cout<<"Archivo configuracion cargado con exito."<<endl;
     cout<<"----------------------------------------------"<<endl;
 
-    cout<<"Texto capas: "<<capas<<endl;
-
     //Cargar las capas
+    //Lectura de archivo
     int m = capas.length();
     char capasC[m+1];
     strcpy(capasC, capas.c_str());
     string direccionCapa = "";
+    string tNumCapa = "";
+    //Variables de Carga
     int x = 0;
     int y = 0;
     int z = 0;
+    string tNum = "";
     int R = 0;
     int G = 0;
     int B = 0;
+    //Variables de Recorrido
+    int nCol = 1;
+    int nFil = 1;
     bool BnumCapa = true;
     bool BdirCapa = false;
+    bool BR = true;
+    bool BG = false;
+    bool BB = false;
 
+    //Lectura de cada archivo
     for(int i=0; i<m; i++){
         if(isalpha(capasC[i]) || capasC[i]  == 46 || capasC[i]  == 95 || capasC[i]  == 45 || isdigit(capasC[i])){
-            direccionCapa = direccionCapa + capasC[i];
+            if(BnumCapa){
+                tNumCapa = tNumCapa + capas[i];
+            }else{
+                direccionCapa = direccionCapa + capasC[i];
+            }
         }else if(capasC[i] == 44){
-            if(BnumCapa)
+            BnumCapa = false;
+            BdirCapa =  true;
+            z = atoi(tNumCapa.c_str());
         }else if(capasC[i] == 59){
+            //Cargar matrizDispersa
+            archivo.open(direccionCapa.c_str(),ios::in);
 
+            if(archivo.fail()){
+                cout<<"No se pudo abrir "<<direccionCapa<<"."<<endl;
+                cout<<"----------------------------------------------"<<endl;
+                Sleep(700);
+                return;
+            }else{
+                cout<<"Cargando la capa "<<direccionCapa<<"..."<<endl;
+                cout<<"----------------------------------------------"<<endl;
+            }
+
+            matrizDispersa* newMatriz = new matrizDispersa();
+
+            //Lectura de archivo
+            while(!archivo.eof()){
+                getline(archivo,texto);
+                int n = texto.length();
+                char car[n+1];
+                strcpy(car, texto.c_str());
+
+                for(int i=0; i<n+1; i++){
+                    //Conteo de columnas
+                    if(car[i] == 59 || car[i] == 44){
+                        if(BB){
+                            B = atoi(tNum.c_str());
+                            tNum = "";
+                            //Guardar nodo
+                            newMatriz->insertar(nCol,nFil,R,G,B);
+                            R = 0;
+                            G = 0;
+                            B = 0;
+                            BB = false;
+                            BR = true;
+                        }
+                        nCol++;
+                    }
+                    //Conteo de filas
+                    if(car[i] == 00){
+                        nCol++;
+                        if(BB){
+                            B = atoi(tNum.c_str());
+                            tNum = "";
+                            //Guardar nodo
+                            newMatriz->insertar(nCol,nFil,R,G,B);
+                            R = 0;
+                            G = 0;
+                            B = 0;
+                            BB = false;
+                            BR = true;
+                        }
+                        nFil++;
+                        nCol = 1;
+                    }
+
+                    //Insercion de los nodos
+                    //Concatenar
+                    if(isdigit(car[i])){
+                        tNum = tNum + car[i];
+                    }
+
+                    if(car[i] == 45){
+                        if(BR){
+                            R = atoi(tNum.c_str());
+                            tNum = "";
+                            BR = false;
+                            BG = true;
+                        }else if(BG){
+                            G = atoi(tNum.c_str());
+                            tNum = "";
+                            BG = false;
+                            BB = true;
+                        }else if(BB){
+                            B = atoi(tNum.c_str());
+                            tNum = "";
+                            //Guardar nodo
+                            newMatriz->insertar(nCol,nFil,R,G,B);
+                            R = 0;
+                            G = 0;
+                            B = 0;
+                            BB = false;
+                            BR = true;
+                        }
+                    }
+                }
+
+            }
+
+            nueva->insertarCapa(newMatriz,z);
+
+            cout<<"----------------------------------------------"<<endl;
+            cout<<direccionCapa<<" cargado con exito."<<endl;
+            cout<<"----------------------------------------------"<<endl;
+
+            archivo.close();
+
+            direccionCapa = "";
+            tNumCapa = "";
+            BnumCapa = true;
+            BdirCapa = false;
+            nCol = 1;
+            nFil = 1;
         }else{
             //Nada
         }
     }
+    cout<<"Pulsa una tecla para continuar."<<endl;
+    getch();
+    //Fin de la inserción de las matrices
+}
+
+void menuReportes(){
 
 }
 

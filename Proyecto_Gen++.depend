@@ -57,7 +57,7 @@
 1567879975 source:e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\fila.cpp
 	"fila.h"
 
-1568070968 source:e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\imagen.cpp
+1568157947 source:e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\imagen.cpp
 	"imagen.h"
 
 1568069219 e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\imagen.h
@@ -69,10 +69,11 @@
 1567995168 source:e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\lateral.cpp
 	"lateral.h"
 
-1568092262 source:e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\main.cpp
+1568162810 source:e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\main.cpp
 	<iostream>
 	<stdlib.h>
 	<string.h>
+	<conio.h>
 	<windows.h>
 	<ctype.h>
 	"matrizDispersa.h"
