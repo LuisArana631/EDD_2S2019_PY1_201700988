@@ -19,6 +19,7 @@ void traversalReport();
 void selectImage();
 void selectCapa();
 void linearReport();
+void exportImage();
 
 //Estructuras globales
 nodoABB* arbolImagenes;
@@ -81,7 +82,8 @@ void menu(){
             break;
         case  5:
             //Export image
-
+            exportImage();
+            menu();
             break;
         case 6:
             //Reports
@@ -282,6 +284,7 @@ void insertarImagen(){
     archivo.close();
 
     int valNombreImg = 0;
+    int auxValNombre = 0;
     string  nombreImg = "";
     int r = dir.length();
     char nombreImgC[r+1];
@@ -290,15 +293,15 @@ void insertarImagen(){
     for(int i=0; i<r; i++){
         if(nombreImgC[i]!=46){
             nombreImg = nombreImg + nombreImgC[i];
+            auxValNombre = nombreImgC[i];
+            valNombreImg = valNombreImg +  auxValNombre;
         }else{
             break;
         }
     }
-
-    valNombreImg =  nombreImg[0];
-
     imagen* nueva = new imagen(nombreImg,heightImagen, widthImagen, heightPixel, widthPixel);
     arbolImagenes->insertar(arbolImagenes, nombreImg, valNombreImg, nueva);
+
 
     cout<<"Width Image: "<<widthImagen<<endl;
     cout<<"Height Image: "<<heightImagen<<endl;
@@ -605,7 +608,7 @@ void traversalReport(){
 }
 
 void selectImage(){
-    string Opcion;
+    string Opcion = "";
     bool opcionValida = false;
 
     while(!opcionValida){
@@ -640,12 +643,17 @@ void selectImage(){
     }
 
     int valNumAux = 0;
+    int valNumImg = 0;
     int steps = Opcion.length();
     char cOpcion[steps+1];
     strcpy(cOpcion,Opcion.c_str());
-    valNumAux = cOpcion[0];
 
-    nodoABB* aux = arbolImagenes->extraerImagen(arbolImagenes,valNumAux);
+    for(int i = 0; i<steps; i++){
+        valNumAux = cOpcion[i];
+        valNumImg = valNumImg + valNumAux;
+    }
+
+    nodoABB* aux = arbolImagenes -> extraerImagen(arbolImagenes,valNumImg);
 
     if(aux == NULL){
         cout<<"---------------Opcion no existe---------------"<<endl;
@@ -659,6 +667,9 @@ void selectImage(){
 
     cout<<"----------------------------------------------"<<endl;
     cout<<"Pulsa una tecla para continuar."<<endl;
+    Opcion = "";
+    valNumAux = 0;
+    valNumImg = 0;
 
     getch();
 }
@@ -784,6 +795,10 @@ void linearReport(){
                 traversalReport();
                 break;
         }
+}
+
+void exportImage(){
+
 }
 
 int main(){

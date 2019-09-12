@@ -2,14 +2,14 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
-	<File name="capa.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="fila.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="190" topLine="0" />
+			<Cursor1 position="951" topLine="30" />
 		</Cursor>
 	</File>
-	<File name="matrizDispersa.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="capa.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="435" topLine="0" />
+			<Cursor1 position="45" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="cabecera.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -17,14 +17,9 @@
 			<Cursor1 position="111" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="columna.cpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="matrizDispersa.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1151" topLine="44" />
-		</Cursor>
-	</File>
-	<File name="columna.h" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="101" topLine="0" />
+			<Cursor1 position="556" topLine="30" />
 		</Cursor>
 	</File>
 	<File name="cabecera.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -32,27 +27,63 @@
 			<Cursor1 position="2795" topLine="110" />
 		</Cursor>
 	</File>
+	<File name="imagen.h" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="367" topLine="2" />
+		</Cursor>
+	</File>
+	<File name="nodoCabecera.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="113" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="nodoLateral.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="245" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="main.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="10609" topLine="225" />
+		</Cursor>
+		<Folding>
+			<Collapse line="27" />
+			<Collapse line="103" />
+			<Collapse line="112" />
+			<Collapse line="466" />
+			<Collapse line="545" />
+			<Collapse line="674" />
+			<Collapse line="731" />
+		</Folding>
+	</File>
+	<File name="nodoCabecera.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="22" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="lateral.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="108" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="matrizDispersa.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="435" topLine="0" />
+		</Cursor>
+	</File>
 	<File name="nodo.h" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="252" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="main.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="nodoLateral.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="22144" topLine="108" />
+			<Cursor1 position="105" topLine="0" />
 		</Cursor>
-		<Folding>
-			<Collapse line="112" />
-			<Collapse line="133" />
-			<Collapse line="462" />
-			<Collapse line="541" />
-			<Collapse line="603" />
-			<Collapse line="675" />
-		</Folding>
 	</File>
 	<File name="nodoABB.cpp" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="8529" topLine="3" />
+			<Cursor1 position="8352" topLine="15" />
 		</Cursor>
 		<Folding>
 			<Collapse line="4" />
@@ -67,47 +98,26 @@
 			<Collapse line="272" />
 			<Collapse line="299" />
 			<Collapse line="309" />
-			<Collapse line="322" />
 		</Folding>
 	</File>
-	<File name="nodoLateral.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="columna.cpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="245" topLine="0" />
+			<Cursor1 position="1151" topLine="44" />
 		</Cursor>
 	</File>
-	<File name="lateral.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="nodo.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="108" topLine="0" />
+			<Cursor1 position="145" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="imagen.h" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="columna.h" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="367" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="lateral.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2710" topLine="104" />
-		</Cursor>
-	</File>
-	<File name="matrizDispersa.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="556" topLine="30" />
+			<Cursor1 position="101" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="capa.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="214" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="fila.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="951" topLine="30" />
-		</Cursor>
-	</File>
-	<File name="nodoLateral.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="105" topLine="0" />
+			<Cursor1 position="183" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="fila.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -115,24 +125,14 @@
 			<Cursor1 position="157" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="nodoABB.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="lateral.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="811" topLine="5" />
-		</Cursor>
-	</File>
-	<File name="nodoCabecera.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="22" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="nodoCabecera.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="113" topLine="0" />
+			<Cursor1 position="2710" topLine="104" />
 		</Cursor>
 	</File>
 	<File name="imagen.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1204" topLine="0" />
+			<Cursor1 position="1240" topLine="0" />
 		</Cursor>
 		<Folding>
 			<Collapse line="4" />
@@ -143,9 +143,9 @@
 			<Collapse line="41" />
 		</Folding>
 	</File>
-	<File name="nodo.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="nodoABB.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="145" topLine="0" />
+			<Cursor1 position="406" topLine="5" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

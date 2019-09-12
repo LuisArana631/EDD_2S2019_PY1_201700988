@@ -19,11 +19,11 @@ void nodoABB::insertar(nodoABB*& arbol, string nombre, int valNombre, imagen*& p
         nodoABB* nueva = crearImagen(nombre, pixelArt, valNombre);
         arbol = nueva;
     }else{
-        int valRaiz = arbol->valNombre;
+        string nameRaiz = arbol->nombre;
 
-        if(valNombre < valRaiz){
+        if(strcmp(nombre.c_str(), nameRaiz.c_str()) < 0){
             insertar(arbol->izquierda, nombre, valNombre, pixelArt);
-        }else if(valNombre > valRaiz){
+        }else if(strcmp(nombre.c_str(), nameRaiz.c_str()) > 0){
             insertar(arbol->derecha, nombre, valNombre, pixelArt);
         }else{
             cout<<"Ya existe una imagen con el nombre "<<valNombre<<"."<<endl;
@@ -313,7 +313,7 @@ bool nodoABB::existeImagen(nodoABB* arbol, int valNombre){
     }else if(arbol->valNombre == valNombre){
         cout<<"Imagen encontrada"<<endl;
         return true;
-    }else if(valNombre < arbol->valNombre){
+    }else if(valNombre > arbol->valNombre){
         return existeImagen(arbol->izquierda, valNombre);
     }else{
         return existeImagen(arbol->derecha, valNombre);
@@ -325,9 +325,8 @@ nodoABB* nodoABB::extraerImagen(nodoABB* arbol, int valNombre){
         nodoABB* ret = NULL;
         return ret;
     }else if(arbol->valNombre == valNombre){
-        cout<<"Imagen encontrada"<<endl;
         return arbol;
-    }else if(valNombre < arbol->valNombre){
+    }else if(valNombre > arbol->valNombre){
         return extraerImagen(arbol->izquierda, valNombre);
     }else{
         return extraerImagen(arbol->derecha, valNombre);
