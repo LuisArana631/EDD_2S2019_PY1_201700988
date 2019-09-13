@@ -326,7 +326,6 @@ nodoABB* nodoABB::extraerImagen(nodoABB* arbol, string nombreNodo){
         return ret;
     }else{
         string nameRaiz = arbol->nombre;
-
         if(strcmp(nombreNodo.c_str(), nameRaiz.c_str()) < 0){
             return extraerImagen(arbol->izquierda, nombreNodo);
         }else if(strcmp(nombreNodo.c_str(), nameRaiz.c_str()) > 0){

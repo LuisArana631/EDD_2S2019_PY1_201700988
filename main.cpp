@@ -104,12 +104,15 @@ void menu(){
 }
 
 bool validarOpcion(string Opcion){
+    bool opcionValida =  true;
     for(int i=0; i<Opcion.length(); i++){
         if(!isalpha(Opcion[i])){
-            return false;
+            if(Opcion[i] != 95){
+                opcionValida = false;
+            }
         }
     }
-    return true;
+    return opcionValida;
 }
 
 bool validarEntrada(string Opcion){
@@ -161,6 +164,19 @@ void insertarImagen(){
         cout<<"----------------------------------------------"<<endl;
     }
 
+    //ExtraerNombreCarpeta
+    int lenCarpeta = dir.length();
+    char NombreCarpeta[lenCarpeta+1];
+    strcpy(NombreCarpeta, dir.c_str());
+    string nombreImagenes = "";
+    for(int i=0; i<lenCarpeta;i++){
+        if(NombreCarpeta[i] == 92 || NombreCarpeta[i] == 47){
+            break;
+        }else{
+            nombreImagenes = nombreImagenes + NombreCarpeta[i];
+        }
+    }
+
     //Variables del archivo Inicial
     int lineas = 0;
     string dirCapa = "";
@@ -192,7 +208,7 @@ void insertarImagen(){
                         insertNum = false;
                     }else if(insertCapa){
                         if(numCapa == "0"){
-                            config = nameCapa;
+                            config = nombreImagenes + "\\" + nameCapa;
                         }else{
                             capas = capas + numCapa + "," + nameCapa + ";";
                         }
@@ -292,15 +308,13 @@ void insertarImagen(){
 
     for(int i=0; i<r; i++){
         if(nombreImgC[i]!=46){
-            nombreImg = nombreImg + nombreImgC[i];
             auxValNombre = nombreImgC[i];
-            valNombreImg = valNombreImg +  auxValNombre;
         }else{
             break;
         }
     }
-    imagen* nueva = new imagen(nombreImg,heightImagen, widthImagen, heightPixel, widthPixel);
-    arbolImagenes->insertar(arbolImagenes, nombreImg, valNombreImg, nueva);
+    imagen* nueva = new imagen(nombreImagenes,heightImagen, widthImagen, heightPixel, widthPixel);
+    arbolImagenes->insertar(arbolImagenes, nombreImagenes, valNombreImg, nueva);
 
 
     cout<<"Width Image: "<<widthImagen<<endl;
@@ -353,6 +367,7 @@ void insertarImagen(){
             z = atoi(tNumCapa.c_str());
         }else if(capasC[i] == 59){
             //Cargar matrizDispersa
+            direccionCapa = nombreImagenes + "\\" + direccionCapa;
             archivo.open(direccionCapa.c_str(),ios::in);
 
             if(archivo.fail()){

@@ -71,7 +71,7 @@
 1567995168 source:e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\lateral.cpp
 	"lateral.h"
 
-1568326624 source:e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\main.cpp
+1568385487 source:e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\main.cpp
 	<iostream>
 	<stdlib.h>
 	<string.h>
@@ -100,6 +100,6 @@
 1567813291 source:e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\nodolateral.cpp
 	"nodoLateral.h"
 
-1568348251 source:e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\nodoabb.cpp
+1568385229 source:e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\nodoabb.cpp
 	"nodoABB.h"
 
