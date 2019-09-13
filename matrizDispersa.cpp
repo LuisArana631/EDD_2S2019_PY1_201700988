@@ -167,3 +167,31 @@ void matrizDispersa::linealizarFilas(){
         cout<<"Capa se encuentra vacía"<<endl;
     }
 }
+
+void matrizDispersa::pintarCuadro(string dir, int maxX){
+    ofstream archivo;
+    archivo.open(dir.c_str(), ios::app);
+
+    if(archivo.fail()){
+        cout<<"No se puede crear css"<<endl;
+        return;
+    }
+
+    // Pintar
+    nodoLateral* auxIndice = matrizDispersa::indiceY->inicio;
+
+    int linealizacion = 0;
+    while(auxIndice!=NULL){
+        nodo* aux = auxIndice->fil->inicio;
+        while(aux!=NULL){
+            linealizacion = (aux->y-1)*(maxX)+aux->x;
+            cout<<"Linealizacion de: x: "<<aux->x<<", y: "<<aux->y<<" es "<<linealizacion<<endl;
+            archivo<<".pixel:nth-child("<<linealizacion<<"){background: rgb("<<aux->R<<", "<<aux->G<<", "<<aux->B<<");}"<<endl;
+            aux = aux -> derecha;
+        }
+        auxIndice = auxIndice ->abajo;
+    }
+
+    archivo.close();
+
+}

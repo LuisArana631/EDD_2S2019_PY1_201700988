@@ -313,23 +313,28 @@ bool nodoABB::existeImagen(nodoABB* arbol, int valNombre){
     }else if(arbol->valNombre == valNombre){
         cout<<"Imagen encontrada"<<endl;
         return true;
-    }else if(valNombre > arbol->valNombre){
+    }else if(valNombre < arbol->valNombre){
         return existeImagen(arbol->izquierda, valNombre);
     }else{
         return existeImagen(arbol->derecha, valNombre);
     }
 }
 
-nodoABB* nodoABB::extraerImagen(nodoABB* arbol, int valNombre){
+nodoABB* nodoABB::extraerImagen(nodoABB* arbol, string nombreNodo){
     if(arbol == NULL){
         nodoABB* ret = NULL;
         return ret;
-    }else if(arbol->valNombre == valNombre){
-        return arbol;
-    }else if(valNombre > arbol->valNombre){
-        return extraerImagen(arbol->izquierda, valNombre);
     }else{
-        return extraerImagen(arbol->derecha, valNombre);
+        string nameRaiz = arbol->nombre;
+
+        if(strcmp(nombreNodo.c_str(), nameRaiz.c_str()) < 0){
+            return extraerImagen(arbol->izquierda, nombreNodo);
+        }else if(strcmp(nombreNodo.c_str(), nameRaiz.c_str()) > 0){
+            return extraerImagen(arbol->derecha, nombreNodo);
+        }else{
+            cout<<"Imagen encontrada."<<endl;
+            return arbol;
+        }
     }
 }
 

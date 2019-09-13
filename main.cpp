@@ -328,8 +328,8 @@ void insertarImagen(){
     int G = 0;
     int B = 0;
     //Variables de Recorrido
-    int nCol = 0;
-    int nFil = 0;
+    int nCol = 1;
+    int nFil = 1;
     bool BnumCapa = true;
     bool BdirCapa = false;
     bool BR = true;
@@ -407,7 +407,7 @@ void insertarImagen(){
                             BR = true;
                         }
                         nFil++;
-                        nCol = 0;
+                        nCol = 1;
                     }
 
                     //Insercion de los nodos
@@ -455,8 +455,8 @@ void insertarImagen(){
             tNumCapa = "";
             BnumCapa = true;
             BdirCapa = false;
-            nCol = 0;
-            nFil = 0;
+            nCol = 1;
+            nFil = 1;
         }else{
             //Nada
         }
@@ -642,18 +642,7 @@ void selectImage(){
         }
     }
 
-    int valNumAux = 0;
-    int valNumImg = 0;
-    int steps = Opcion.length();
-    char cOpcion[steps+1];
-    strcpy(cOpcion,Opcion.c_str());
-
-    for(int i = 0; i<steps; i++){
-        valNumAux = cOpcion[i];
-        valNumImg = valNumImg + valNumAux;
-    }
-
-    nodoABB* aux = arbolImagenes -> extraerImagen(arbolImagenes,valNumImg);
+    nodoABB* aux = arbolImagenes -> extraerImagen(arbolImagenes,Opcion);
 
     if(aux == NULL){
         cout<<"---------------Opcion no existe---------------"<<endl;
@@ -668,9 +657,6 @@ void selectImage(){
     cout<<"----------------------------------------------"<<endl;
     cout<<"Pulsa una tecla para continuar."<<endl;
     Opcion = "";
-    valNumAux = 0;
-    valNumImg = 0;
-
     getch();
 }
 
@@ -798,7 +784,26 @@ void linearReport(){
 }
 
 void exportImage(){
-
+    if(trabajo!=NULL){
+        string dirCarpeta = "C:\\Users\\Luis Fer\\Desktop\\Exports";
+        mkdir(dirCarpeta.c_str());
+        dirCarpeta = dirCarpeta + "\\" + trabajo->id;
+        mkdir(dirCarpeta.c_str());
+        trabajo->crearHTML(dirCarpeta);
+        trabajo->crearCSSOriginal(dirCarpeta);
+        dirCarpeta = dirCarpeta + "\\" + trabajo->id + ".html";
+        dirCarpeta = "start \"\" \"" + dirCarpeta +"\"";
+        cout<<"Dir: "<<dirCarpeta<<endl;
+        system(dirCarpeta.c_str());
+        cout<<"----------------------------------------------"<<endl;
+        cout<<"Pulsa una tecla para continuar."<<endl;
+        getch();
+    }else{
+        cout<<"No hay imagen seleccionada"<<endl;
+        cout<<"----------------------------------------------"<<endl;
+        cout<<"Pulsa una tecla para continuar."<<endl;
+        getch();
+    }
 }
 
 int main(){

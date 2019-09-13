@@ -2,6 +2,8 @@
 #define IMAGEN_H
 
 #include <iostream>
+#include <fstream>
+#include <direct.h>
 #include <stdlib.h>
 #include <string.h>
 #include "capa.h"
@@ -24,6 +26,8 @@ public:
     int valorMaximo();
     void mostrarCapas();
     capa* extraerCapa(int);
+    void crearHTML(string);
+    void crearCSSOriginal(string);
 };
 
 #endif // IMAGEN_H

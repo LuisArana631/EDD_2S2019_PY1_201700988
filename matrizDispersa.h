@@ -20,6 +20,7 @@ public:
     void graficarMatriz();
     void linealizarFilas();
     void linealizarColumnas();
+    void pintarCuadro(string, int);
 };
 
 #endif // MATRIZDISPERSA_H

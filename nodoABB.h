@@ -28,7 +28,7 @@ public:
     void mostrarPostOrden(nodoABB*, nodoABB*);
     void mostrarListaArbol(nodoABB*);
     bool existeImagen(nodoABB*, int);
-    nodoABB* extraerImagen(nodoABB*, int);
+    nodoABB* extraerImagen(nodoABB*, string);
 };
 
 #endif // NODOABB_H

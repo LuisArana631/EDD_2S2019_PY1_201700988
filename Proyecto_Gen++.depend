@@ -28,7 +28,7 @@
 	<stdlib.h>
 	"matrizDispersa.h"
 
-1567983146 e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\matrizdispersa.h
+1568339645 e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\matrizdispersa.h
 	<iostream>
 	<stdlib.h>
 	<fstream>
@@ -57,11 +57,13 @@
 1567879975 source:e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\fila.cpp
 	"fila.h"
 
-1568236366 source:e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\imagen.cpp
+1568347106 source:e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\imagen.cpp
 	"imagen.h"
 
-1568236411 e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\imagen.h
+1568318643 e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\imagen.h
 	<iostream>
+	<fstream>
+	<direct.h>
 	<stdlib.h>
 	<string.h>
 	"capa.h"
@@ -69,7 +71,7 @@
 1567995168 source:e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\lateral.cpp
 	"lateral.h"
 
-1568262466 source:e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\main.cpp
+1568326624 source:e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\main.cpp
 	<iostream>
 	<stdlib.h>
 	<string.h>
@@ -80,13 +82,13 @@
 	"imagen.h"
 	"nodoABB.h"
 
-1568242486 e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\nodoabb.h
+1568348261 e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\nodoabb.h
 	<iostream>
 	<stdlib.h>
 	<string.h>
 	"imagen.h"
 
-1567996301 source:e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\matrizdispersa.cpp
+1568338687 source:e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\matrizdispersa.cpp
 	"matrizDispersa.h"
 
 1567562292 source:e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\nodo.cpp
@@ -98,6 +100,6 @@
 1567813291 source:e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\nodolateral.cpp
 	"nodoLateral.h"
 
-1568262763 source:e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\nodoabb.cpp
+1568348251 source:e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\nodoabb.cpp
 	"nodoABB.h"
 
