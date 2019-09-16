@@ -35,14 +35,18 @@ void filtro::graficar(){
 
         archivo<<"digraph ListaFiltros{"<<endl;
         archivo<<"node [shape=record];"<<endl;
+        archivo<<"rankdir = LR;"<<endl;
 
         nodoFiltro* aux = filtro::inicio;
 
         while(aux!=NULL){
-
+            archivo<<aux->nameFiltro;
+            if (aux->siguiente!=NULL)
+                archivo<<" -> ";
             aux = aux -> siguiente;
         }
 
+        archivo<<";"<<endl;
         archivo<<"}"<<endl;
     }
 }

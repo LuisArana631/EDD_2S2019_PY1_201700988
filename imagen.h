@@ -7,6 +7,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "capa.h"
+#include "filtro.h"
 
 using namespace std;
 
@@ -17,8 +18,11 @@ public:
     int imageWidth;
     int pixelHeight;
     int pixelWidth;
+    filtro* listaFiltros;
     capa* inicio;
     capa* fin;
+    capa* copiaInicio;
+    capa* copiaFin;
 
     imagen(string, int, int, int, int);
     bool vacia();
@@ -28,6 +32,9 @@ public:
     capa* extraerCapa(int);
     void crearHTML(string);
     void crearCSSOriginal(string);
+    void inicializarCopia();
+    void terminarCopia();
+    void filtroNegativoImg();
 };
 
 #endif // IMAGEN_H

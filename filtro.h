@@ -15,5 +15,4 @@ public:
     bool vacia();
     void insertar(string);
     void graficar();
-    void descartarFiltro();
 };

@@ -20,6 +20,8 @@ void selectImage();
 void selectCapa();
 void linearReport();
 void exportImage();
+void menuFiltros();
+int aplicarFiltro();
 
 //Estructuras globales
 nodoABB* arbolImagenes;
@@ -74,7 +76,12 @@ void menu(){
             break;
         case 3:
             //Apply filters
-
+            if(trabajo!=NULL){
+                menuFiltros();
+            }else{
+                selectImage();
+                menuFiltros();
+            }
             break;
         case 4:
             //Manual editing
@@ -334,8 +341,6 @@ void insertarImagen(){
     string tNumCapa = "";
     string nombreCapa = "";
     //Variables de Carga
-    int x = 0;
-    int y = 0;
     int z = 0;
     string tNum = "";
     int R = 0;
@@ -543,7 +548,8 @@ void menuReportes(){
             break;
         case 5:
             //Filters report
-
+            if(trabajo!=NULL)
+                trabajo->listaFiltros->graficar();
             break;
         case 6:
             //Return
@@ -668,6 +674,7 @@ void selectImage(){
     }
 
     trabajo = aux->listaCapas;
+    trabajo->terminarCopia();
 
     cout<<"----------------------------------------------"<<endl;
     cout<<"Pulsa una tecla para continuar."<<endl;
@@ -826,6 +833,116 @@ int main(){
     return 0;
 }
 
+void menuFiltros(){
+    string Opcion;
+    bool entradaValida = false;
 
+    while(!entradaValida){
+        try{
+            system("cls");
+            cout<<"----------------------------------------------"<<endl;
+            cout<<"-------------------PHOTGEN++------------------"<<endl;
+            cout<<"----------------------------------------------"<<endl;
+            cout<<"-----------------APPLY FILTERS----------------"<<endl;
+            cout<<"----------------------------------------------"<<endl;
+            cout<<"1 - Negative."<<endl;
+            cout<<"2 - Grayscale."<<endl;
+            cout<<"3 - Mirror."<<endl;
+            cout<<"4 - Collage."<<endl;
+            cout<<"5 - Mosaic."<<endl;
+            cout<<"6 - Return."<<endl;
+            cout<<"----------------------------------------------"<<endl;
+            cout<<"Option: ";
+            getline(cin,Opcion);
+            entradaValida = validarEntrada(Opcion);
+            cout<<"----------------------------------------------"<<endl;
+            if(!entradaValida)
+                throw Opcion;
+        }catch(string e){
+            cout<<"---------------Opcion no existe---------------"<<endl;
+            cout<<"----------------------------------------------"<<endl;
+            Sleep(500);
+        }
+    }
 
+    int OpcionEntera = atoi(Opcion.c_str());
+    int aplicacion = 0;
+
+    switch(OpcionEntera){
+        case 1:
+            //Negative
+            aplicacion = aplicarFiltro();
+            trabajo->inicializarCopia();
+            if(aplicacion == 1){
+                trabajo->filtroNegativoImg();
+            }else{
+
+            }
+            break;
+        case 2:
+            //Grayscale
+
+            break;
+        case 3:
+            //Mirror
+
+            break;
+        case 4:
+            //Collage
+
+            break;
+        case 5:
+            //Mosaic
+
+            break;
+        case 6:
+            //Return
+            return;
+            break;
+        default:
+            //Cuando es un numero incorrecto
+            cout<<"---------------Opcion no existe---------------"<<endl;
+            cout<<"----------------------------------------------"<<endl;
+            Sleep(500);
+            menuReportes();
+            break;
+    }
+}
+
+int aplicarFiltro(){
+    string Opcion;
+    bool entradaValida = false;
+
+    while(!entradaValida){
+        try{
+            system("cls");
+            cout<<"----------------------------------------------"<<endl;
+            cout<<"-------------------PHOTGEN++------------------"<<endl;
+            cout<<"----------------------------------------------"<<endl;
+            cout<<"-----------------APPLY FILTERS----------------"<<endl;
+            cout<<"----------------------------------------------"<<endl;
+            cout<<"1 - Imagen completa."<<endl;
+            cout<<"2 - Capa."<<endl;
+            cout<<"----------------------------------------------"<<endl;
+            cout<<"Option: ";
+            getline(cin,Opcion);
+            entradaValida = validarEntrada(Opcion);
+            cout<<"----------------------------------------------"<<endl;
+            if(!entradaValida)
+                throw Opcion;
+        }catch(string e){
+            cout<<"---------------Opcion no existe---------------"<<endl;
+            cout<<"----------------------------------------------"<<endl;
+            Sleep(500);
+        }
+    }
+
+    int OpcionEntera = atoi(Opcion.c_str());
+
+    if(OpcionEntera < 1 || OpcionEntera > 2){
+        return aplicarFiltro();
+    }else{
+        return OpcionEntera;
+    }
+}
 

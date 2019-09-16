@@ -6,6 +6,9 @@ imagen::imagen(string id, int imageHeight, int imageWidth, int pixelHeight, int 
     imagen::id = id;
     imagen::inicio  = NULL;
     imagen::fin = NULL;
+    imagen::copiaFin =  NULL;
+    imagen::copiaInicio = NULL;
+    imagen::listaFiltros = NULL;
     imagen::imageWidth = imageWidth;
     imagen::imageHeight = imageHeight;
     imagen::pixelHeight = pixelHeight;
@@ -173,3 +176,24 @@ void imagen::crearHTML(string dir){
     cout<<"Archivo .html creado."<<endl;
 
 }
+
+void imagen::inicializarCopia(){
+    imagen::copiaInicio = imagen::inicio;
+    imagen::copiaFin = imagen::fin;
+}
+
+void imagen::terminarCopia(){
+    imagen::copiaInicio = NULL;
+    imagen::copiaFin = NULL;
+}
+
+void imagen::filtroNegativoImg(){
+    capa* aux = imagen::inicio;
+    while(aux!=NULL){
+
+
+        aux = aux -> siguiente;
+    }
+}
+
+
