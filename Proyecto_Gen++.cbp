@@ -40,6 +40,8 @@
 		<Unit filename="columna.h" />
 		<Unit filename="fila.cpp" />
 		<Unit filename="fila.h" />
+		<Unit filename="filtro.cpp" />
+		<Unit filename="filtro.h" />
 		<Unit filename="imagen.cpp" />
 		<Unit filename="imagen.h" />
 		<Unit filename="lateral.cpp" />
@@ -53,6 +55,8 @@
 		<Unit filename="nodoABB.h" />
 		<Unit filename="nodoCabecera.cpp" />
 		<Unit filename="nodoCabecera.h" />
+		<Unit filename="nodoFiltro.cpp" />
+		<Unit filename="nodoFiltro.h" />
 		<Unit filename="nodoLateral.cpp" />
 		<Unit filename="nodoLateral.h" />
 		<Extensions>

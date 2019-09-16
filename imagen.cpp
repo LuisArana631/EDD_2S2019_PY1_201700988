@@ -51,6 +51,22 @@ capa* imagen::extraerCapa(int z){
 }
 
 void imagen::crearCSSOriginal(string dir){
+
+    int maxX = 0;
+    int maxY = 0;
+
+    capa* auxDeCapa = imagen::inicio;
+
+    while(auxDeCapa!=NULL){
+        if(auxDeCapa->matriz->indiceX->maximoX() > maxX)
+            maxX = auxDeCapa->matriz->indiceX->maximoX();
+
+        if(auxDeCapa->matriz->indiceY->maximoY() > maxY)
+            maxY = auxDeCapa->matriz->indiceY->maximoY();
+
+        auxDeCapa = auxDeCapa->siguiente;
+    }
+
     dir = dir + "\\" + imagen::id +".css";
     ofstream archivo;
     archivo.open(dir.c_str(),ios::out);
@@ -70,8 +86,8 @@ void imagen::crearCSSOriginal(string dir){
     archivo<<"}"<<endl;
 
     archivo<<".canvas{"<<endl;
-    archivo<<"width: "<<imagen::imageWidth<<"px;"<<endl;
-    archivo<<"height: "<<imagen::imageHeight<<"px;"<<endl;
+    archivo<<"width: "<<imagen::pixelWidth*maxX<<"px;"<<endl;
+    archivo<<"height: "<<imagen::pixelHeight*maxY<<"px;"<<endl;
     archivo<<"}"<<endl;
 
     archivo<<".pixel{"<<endl;
@@ -84,16 +100,6 @@ void imagen::crearCSSOriginal(string dir){
     archivo.close();
 
     capa* aux = imagen::inicio;
-
-    int maxX = 0;
-
-    capa* auxDeCapa = imagen::inicio;
-
-    while(auxDeCapa!=NULL){
-        if(auxDeCapa->matriz->indiceX->maximoX() > maxX)
-            maxX = auxDeCapa->matriz->indiceX->maximoX();
-        auxDeCapa = auxDeCapa->siguiente;
-    }
 
     while(aux!=NULL){
         cout<<"Pintando la capa: "<<aux->z;
