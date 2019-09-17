@@ -887,6 +887,7 @@ void menuFiltros(){
             if(aplicacion == 1){
                 trabajo->filtroNegativoImg();
                 trabajo->listaFiltros->insertar("Negative");
+                trabajo->mostrarCopia();
             }else{
                 selectCapa();
                 capaTrabajar->matriz->filtroNegativo();

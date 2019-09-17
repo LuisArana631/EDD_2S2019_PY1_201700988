@@ -230,4 +230,13 @@ void imagen::filtroNegativoImg(){
     }
 }
 
+void imagen::mostrarCopia(){
+    capa* aux = imagen::copiaInicio;
+
+    while(aux!=NULL){
+    aux->matriz->mostrarDatos();
+    aux = aux ->siguiente;
+    }
+}
+
 

@@ -222,8 +222,20 @@ void matrizDispersa::filtroNegativo(){
 
             aux = aux ->abajo;
         }
-
         auxCabecera = auxCabecera->siguiente;
     }
 
+}
+
+void matrizDispersa::mostrarDatos(){
+    nodoCabecera* auxCabecera = matrizDispersa::indiceX->inicio;
+    while(auxCabecera!=NULL){
+        nodo* aux = auxCabecera->col->inicio;
+        while(aux!=NULL){
+            cout<<"R: "<<aux->R<<" G: "<<aux->G<<" B: "<<aux->B<<endl;
+
+            aux = aux ->abajo;
+        }
+        auxCabecera = auxCabecera->siguiente;
+    }
 }

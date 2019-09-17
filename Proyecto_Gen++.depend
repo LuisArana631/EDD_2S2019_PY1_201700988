@@ -132,7 +132,7 @@
 	<stdlib.h>
 	"matrizDispersa.h"
 
-1568690416 c:\users\luara\desktop\edd_2s2019_py1_201700988\matrizdispersa.h
+1568696173 c:\users\luara\desktop\edd_2s2019_py1_201700988\matrizdispersa.h
 	<iostream>
 	<stdlib.h>
 	<fstream>
@@ -176,10 +176,10 @@
 	<stdlib.h>
 	<string.h>
 
-1568691166 source:c:\users\luara\desktop\edd_2s2019_py1_201700988\imagen.cpp
+1568696281 source:c:\users\luara\desktop\edd_2s2019_py1_201700988\imagen.cpp
 	"imagen.h"
 
-1568685207 c:\users\luara\desktop\edd_2s2019_py1_201700988\imagen.h
+1568696160 c:\users\luara\desktop\edd_2s2019_py1_201700988\imagen.h
 	<iostream>
 	<fstream>
 	<direct.h>
@@ -208,7 +208,7 @@
 	<string.h>
 	"imagen.h"
 
-1568690914 source:c:\users\luara\desktop\edd_2s2019_py1_201700988\matrizdispersa.cpp
+1568696271 source:c:\users\luara\desktop\edd_2s2019_py1_201700988\matrizdispersa.cpp
 	"matrizDispersa.h"
 
 1568602734 source:c:\users\luara\desktop\edd_2s2019_py1_201700988\nodo.cpp

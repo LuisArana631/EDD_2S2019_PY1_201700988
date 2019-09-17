@@ -34,6 +34,7 @@ public:
     void inicializarCopia();
     void terminarCopia();
     void filtroNegativoImg();
+    void mostrarCopia();
 };
 
 #endif // IMAGEN_H
