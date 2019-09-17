@@ -22,7 +22,6 @@ public:
     capa* inicio;
     capa* fin;
     capa* copiaInicio;
-    capa* copiaFin;
 
     imagen(string, int, int, int, int);
     bool vacia();

@@ -45,8 +45,23 @@ void filtro::graficar(){
                 archivo<<" -> ";
             aux = aux -> siguiente;
         }
-
         archivo<<";"<<endl;
+
+        aux = filtro::fin;
+        while(aux!=NULL){
+            archivo<<aux->nameFiltro;
+            if (aux->siguiente!=NULL)
+                archivo<<" -> ";
+            aux = aux -> anterior;
+        }
+        archivo<<";"<<endl;
+
+        archivo<<filtro::inicio->nameFiltro<<" -> "<<filtro::fin->nameFiltro<<endl;
+        archivo<<filtro::fin->nameFiltro<<" -> "<<filtro::inicio->nameFiltro<<endl;
+
         archivo<<"}"<<endl;
+
+        system("dot -Tpng Filtros.dot -o Filtros.png");
+        system("Filtros.png");
     }
 }

@@ -121,7 +121,7 @@
 	<stdlib.h>
 	"nodo.h"
 
-1568602734 c:\users\luara\desktop\edd_2s2019_py1_201700988\nodo.h
+1568691938 c:\users\luara\desktop\edd_2s2019_py1_201700988\nodo.h
 	<stdlib.h>
 
 1568602734 source:c:\users\luara\desktop\edd_2s2019_py1_201700988\capa.cpp
@@ -132,7 +132,7 @@
 	<stdlib.h>
 	"matrizDispersa.h"
 
-1568602734 c:\users\luara\desktop\edd_2s2019_py1_201700988\matrizdispersa.h
+1568690416 c:\users\luara\desktop\edd_2s2019_py1_201700988\matrizdispersa.h
 	<iostream>
 	<stdlib.h>
 	<fstream>
@@ -161,12 +161,13 @@
 1568602734 source:c:\users\luara\desktop\edd_2s2019_py1_201700988\fila.cpp
 	"fila.h"
 
-1568658128 source:c:\users\luara\desktop\edd_2s2019_py1_201700988\filtro.cpp
+1568684881 source:c:\users\luara\desktop\edd_2s2019_py1_201700988\filtro.cpp
 	"filtro.h"
 
-1568658031 c:\users\luara\desktop\edd_2s2019_py1_201700988\filtro.h
+1568678605 c:\users\luara\desktop\edd_2s2019_py1_201700988\filtro.h
 	<stdlib.h>
 	<iostream>
+	<fstream>
 	<string.h>
 	"nodoFiltro.h"
 
@@ -175,21 +176,22 @@
 	<stdlib.h>
 	<string.h>
 
-1568602734 source:c:\users\luara\desktop\edd_2s2019_py1_201700988\imagen.cpp
+1568691166 source:c:\users\luara\desktop\edd_2s2019_py1_201700988\imagen.cpp
 	"imagen.h"
 
-1568602734 c:\users\luara\desktop\edd_2s2019_py1_201700988\imagen.h
+1568685207 c:\users\luara\desktop\edd_2s2019_py1_201700988\imagen.h
 	<iostream>
 	<fstream>
 	<direct.h>
 	<stdlib.h>
 	<string.h>
 	"capa.h"
+	"filtro.h"
 
 1568602734 source:c:\users\luara\desktop\edd_2s2019_py1_201700988\lateral.cpp
 	"lateral.h"
 
-1568602734 source:c:\users\luara\desktop\edd_2s2019_py1_201700988\main.cpp
+1568692654 source:c:\users\luara\desktop\edd_2s2019_py1_201700988\main.cpp
 	<iostream>
 	<stdlib.h>
 	<string.h>
@@ -206,7 +208,7 @@
 	<string.h>
 	"imagen.h"
 
-1568602734 source:c:\users\luara\desktop\edd_2s2019_py1_201700988\matrizdispersa.cpp
+1568690914 source:c:\users\luara\desktop\edd_2s2019_py1_201700988\matrizdispersa.cpp
 	"matrizDispersa.h"
 
 1568602734 source:c:\users\luara\desktop\edd_2s2019_py1_201700988\nodo.cpp

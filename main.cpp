@@ -9,6 +9,7 @@
 #include "matrizDispersa.h"
 #include "imagen.h"
 #include "nodoABB.h"
+
 using namespace std;
 
 void menu();
@@ -82,6 +83,7 @@ void menu(){
                 selectImage();
                 menuFiltros();
             }
+            menu();
             break;
         case 4:
             //Manual editing
@@ -528,7 +530,9 @@ void menuReportes(){
             break;
         case 2:
             //Image layer report
-            selectImage();
+            if(trabajo==NULL){
+                selectImage();
+            }
             selectCapa();
             if(capaTrabajar!=NULL)
                 capaTrabajar->matriz->graficarMatriz();
@@ -548,8 +552,12 @@ void menuReportes(){
             break;
         case 5:
             //Filters report
-            if(trabajo!=NULL)
-                trabajo->listaFiltros->graficar();
+            if(trabajo!=NULL){
+                    if(trabajo->listaFiltros!=NULL){
+                        trabajo->listaFiltros->graficar();
+                    }
+            }
+
             break;
         case 6:
             //Return
@@ -632,6 +640,9 @@ void selectImage(){
     string Opcion = "";
     bool opcionValida = false;
 
+    if(trabajo!=NULL)
+        trabajo->terminarCopia();
+
     while(!opcionValida){
         try{
             system("cls");
@@ -674,7 +685,7 @@ void selectImage(){
     }
 
     trabajo = aux->listaCapas;
-    trabajo->terminarCopia();
+
 
     cout<<"----------------------------------------------"<<endl;
     cout<<"Pulsa una tecla para continuar."<<endl;
@@ -807,7 +818,7 @@ void linearReport(){
 
 void exportImage(){
     if(trabajo!=NULL){
-        string dirCarpeta = "C:\\Users\\Luis Fer\\Desktop\\Exports";
+        string dirCarpeta = "C:\\Users\\luara\\Desktop\\Exports";
         mkdir(dirCarpeta.c_str());
         dirCarpeta = dirCarpeta + "\\" + trabajo->id;
         mkdir(dirCarpeta.c_str());
@@ -875,9 +886,16 @@ void menuFiltros(){
             trabajo->inicializarCopia();
             if(aplicacion == 1){
                 trabajo->filtroNegativoImg();
+                trabajo->listaFiltros->insertar("Negative");
             }else{
-
+                selectCapa();
+                capaTrabajar->matriz->filtroNegativo();
             }
+            cout<<"----------------------------------------------"<<endl;
+            cout<<"---------------Filtro aplicado----------------"<<endl;
+            cout<<"----------------------------------------------"<<endl;
+            cout<<"Pulsa una tecla para continuar."<<endl;
+            getch();
             break;
         case 2:
             //Grayscale

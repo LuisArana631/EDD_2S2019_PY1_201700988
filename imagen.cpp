@@ -6,9 +6,8 @@ imagen::imagen(string id, int imageHeight, int imageWidth, int pixelHeight, int 
     imagen::id = id;
     imagen::inicio  = NULL;
     imagen::fin = NULL;
-    imagen::copiaFin =  NULL;
     imagen::copiaInicio = NULL;
-    imagen::listaFiltros = NULL;
+    imagen::listaFiltros = new filtro();
     imagen::imageWidth = imageWidth;
     imagen::imageHeight = imageHeight;
     imagen::pixelHeight = pixelHeight;
@@ -43,7 +42,14 @@ void imagen::mostrarCapas(){
 }
 
 capa* imagen::extraerCapa(int z){
-    capa* aux = imagen::inicio;
+    capa* aux = NULL;
+
+    if(imagen::copiaInicio!=NULL){
+        aux = imagen::copiaInicio;
+    }else{
+        aux = imagen::inicio;
+    }
+
     while(aux!=NULL){
         if(aux->z == z){
             return aux;
@@ -58,7 +64,14 @@ void imagen::crearCSSOriginal(string dir){
     int maxX = 0;
     int maxY = 0;
 
-    capa* auxDeCapa = imagen::inicio;
+    capa* auxDeCapa = NULL;
+
+    if(imagen::copiaInicio!=NULL){
+        cout<<"Usando copia."<<endl;
+        auxDeCapa = imagen::copiaInicio;
+    }else{
+        auxDeCapa = imagen::inicio;
+    }
 
     while(auxDeCapa!=NULL){
         if(auxDeCapa->matriz->indiceX->maximoX() > maxX)
@@ -102,10 +115,17 @@ void imagen::crearCSSOriginal(string dir){
 
     archivo.close();
 
-    capa* aux = imagen::inicio;
+    capa* aux = NULL;
+
+    if(imagen::copiaInicio!=NULL){
+        cout<<"Usando segunda copia"<<endl;
+        aux = imagen::copiaInicio;
+    }else{
+        aux = imagen::inicio;
+    }
 
     while(aux!=NULL){
-        cout<<"Pintando la capa: "<<aux->z;
+        cout<<"Pintando la capa: "<<aux->z<<endl;
         aux->matriz->pintarCuadro(dir, maxX);
         aux = aux->siguiente;
     }
@@ -178,21 +198,35 @@ void imagen::crearHTML(string dir){
 }
 
 void imagen::inicializarCopia(){
-    imagen::copiaInicio = imagen::inicio;
-    imagen::copiaFin = imagen::fin;
+    capa* copia = imagen::fin;
+
+    while(copia!=NULL){
+        matrizDispersa* copiaMatriz = copia->matriz;
+        int valorCopia = copia->z;
+        string nombreCopia = copia->nombre;
+
+        capa* nuevaCopia = new capa(copiaMatriz,valorCopia,nombreCopia);
+
+        nuevaCopia -> siguiente = imagen::copiaInicio;
+        imagen::copiaInicio = nuevaCopia;
+
+
+        copia = copia -> anterior;
+    }
 }
 
 void imagen::terminarCopia(){
     imagen::copiaInicio = NULL;
-    imagen::copiaFin = NULL;
 }
 
 void imagen::filtroNegativoImg(){
-    capa* aux = imagen::inicio;
+    capa* aux = imagen::copiaInicio;
+
     while(aux!=NULL){
-
-
-        aux = aux -> siguiente;
+        cout<<"Capa: "<<aux->nombre<<endl;
+        aux->matriz->filtroNegativo();
+        cout<<"----------------------------------------------"<<endl;
+        aux = aux->siguiente;
     }
 }
 
