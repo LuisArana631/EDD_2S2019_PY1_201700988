@@ -23,6 +23,7 @@ void linearReport();
 void exportImage();
 void menuFiltros();
 int aplicarFiltro();
+int numCapa();
 
 //Estructuras globales
 nodoABB* arbolImagenes;
@@ -895,6 +896,7 @@ void menuFiltros(){
 
     int OpcionEntera = atoi(Opcion.c_str());
     int aplicacion = 0;
+    int capa = 0;
 
     switch(OpcionEntera){
         case 1:
@@ -903,7 +905,8 @@ void menuFiltros(){
             if(aplicacion == 1){
                 trabajo->filtroNegativo();
             }else{
-
+                capa = numCapa();
+                trabajo->filtroNegativoCapa(capa);
             }
             cout<<"----------------------------------------------"<<endl;
             cout<<"---------------Filtro aplicado----------------"<<endl;
@@ -917,7 +920,8 @@ void menuFiltros(){
             if(aplicacion == 1){
                 trabajo->filtroGrises();
             }else{
-
+                capa = numCapa();
+                trabajo->filtroGrisesCapa(capa);
             }
             cout<<"----------------------------------------------"<<endl;
             cout<<"---------------Filtro aplicado----------------"<<endl;
@@ -988,3 +992,29 @@ int aplicarFiltro(){
     }
 }
 
+int numCapa(){
+    string Opcion;
+    bool entradaValida = false;
+
+    while(!entradaValida){
+        try{
+        cout<<"----------------------------------------------"<<endl;
+        trabajo->mostrarCapas();
+        cout<<"----------------------------------------------"<<endl;
+        cout<<"Option: ";
+            getline(cin,Opcion);
+            entradaValida = validarEntrada(Opcion);
+            cout<<"----------------------------------------------"<<endl;
+            if(!entradaValida)
+                throw Opcion;
+        }catch(string e){
+            cout<<"---------------Opcion no existe---------------"<<endl;
+            cout<<"----------------------------------------------"<<endl;
+            Sleep(500);
+        }
+    }
+
+    int OpcionEntera = atoi(Opcion.c_str());
+
+    return OpcionEntera;
+}

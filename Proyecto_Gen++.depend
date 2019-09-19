@@ -57,10 +57,10 @@
 1567879975 source:e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\fila.cpp
 	"fila.h"
 
-1568859809 source:e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\imagen.cpp
+1568866147 source:e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\imagen.cpp
 	"imagen.h"
 
-1568858903 e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\imagen.h
+1568866155 e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\imagen.h
 	<iostream>
 	<fstream>
 	<direct.h>
@@ -72,7 +72,7 @@
 1567995168 source:e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\lateral.cpp
 	"lateral.h"
 
-1568859710 source:e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\main.cpp
+1568863947 source:e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\main.cpp
 	<iostream>
 	<stdlib.h>
 	<string.h>
@@ -363,7 +363,7 @@
 	<string.h>
 	"capa.h"
 
-1568855777 source:e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\filtro.cpp
+1568860018 source:e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\filtro.cpp
 	"filtro.h"
 
 1568852948 source:e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\nodofiltro.cpp

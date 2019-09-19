@@ -33,6 +33,8 @@ public:
     void terminarFiltros();
     void filtroNegativo();
     void filtroGrises();
+    void filtroNegativoCapa(int);
+    void filtroGrisesCapa(int);
 };
 
 #endif // IMAGEN_H
