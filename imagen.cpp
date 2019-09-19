@@ -6,7 +6,6 @@ imagen::imagen(string id, int imageHeight, int imageWidth, int pixelHeight, int 
     imagen::id = id;
     imagen::inicio  = NULL;
     imagen::fin = NULL;
-    imagen::copiaInicio = NULL;
     imagen::listaFiltros = new filtro();
     imagen::imageWidth = imageWidth;
     imagen::imageHeight = imageHeight;
@@ -42,13 +41,8 @@ void imagen::mostrarCapas(){
 }
 
 capa* imagen::extraerCapa(int z){
-    capa* aux = NULL;
 
-    if(imagen::copiaInicio!=NULL){
-        aux = imagen::copiaInicio;
-    }else{
-        aux = imagen::inicio;
-    }
+    capa* aux = imagen::inicio;
 
     while(aux!=NULL){
         if(aux->z == z){
@@ -65,13 +59,14 @@ void imagen::crearCSSOriginal(string dir){
     int maxY = 0;
 
     capa* auxDeCapa = NULL;
-
-    if(imagen::copiaInicio!=NULL){
-        cout<<"Usando copia."<<endl;
-        auxDeCapa = imagen::copiaInicio;
+    if(imagen::listaFiltros->inicio != NULL){
+        cout<<"usando la del filtro"<<endl;
+        auxDeCapa = imagen::listaFiltros->fin->inicio;
     }else{
         auxDeCapa = imagen::inicio;
     }
+
+
 
     while(auxDeCapa!=NULL){
         if(auxDeCapa->matriz->indiceX->maximoX() > maxX)
@@ -116,13 +111,13 @@ void imagen::crearCSSOriginal(string dir){
     archivo.close();
 
     capa* aux = NULL;
-
-    if(imagen::copiaInicio!=NULL){
-        cout<<"Usando segunda copia"<<endl;
-        aux = imagen::copiaInicio;
+    if(imagen::listaFiltros->inicio != NULL){
+        cout<<"usando la del filtro"<<endl;
+        aux = imagen::listaFiltros->fin->inicio;
     }else{
         aux = imagen::inicio;
     }
+
 
     while(aux!=NULL){
         cout<<"Pintando la capa: "<<aux->z<<endl;
@@ -197,46 +192,81 @@ void imagen::crearHTML(string dir){
 
 }
 
-void imagen::inicializarCopia(){
-    capa* copia = imagen::fin;
+void imagen::filtroNegativo(){
+    capa* aux = imagen::inicio;
 
-    while(copia!=NULL){
-        matrizDispersa* copiaMatriz = copia->matriz;
-        int valorCopia = copia->z;
-        string nombreCopia = copia->nombre;
-
-        capa* nuevaCopia = new capa(copiaMatriz,valorCopia,nombreCopia);
-
-        nuevaCopia -> siguiente = imagen::copiaInicio;
-        imagen::copiaInicio = nuevaCopia;
-
-
-        copia = copia -> anterior;
-    }
-}
-
-void imagen::terminarCopia(){
-    imagen::copiaInicio = NULL;
-}
-
-void imagen::filtroNegativoImg(){
-    capa* aux = imagen::copiaInicio;
+    imagen::listaFiltros->insertar("Negativo");
 
     while(aux!=NULL){
-        cout<<"Capa: "<<aux->nombre<<endl;
-        aux->matriz->filtroNegativo();
-        cout<<"----------------------------------------------"<<endl;
-        aux = aux->siguiente;
+        //Extraer valores que iran en la capa
+        matrizDispersa* copiaMatriz = new matrizDispersa();
+        int valorCopia = aux->z;
+        string nombreCopia = aux->nombre;
+
+        //Llenar la matriz nueva con el filtro aplicado
+        nodoLateral* auxLateral = aux->matriz->indiceY->inicio;
+
+        while(auxLateral!=NULL){
+            nodo* auxNodo = auxLateral->fil->inicio;
+
+            while(auxNodo!=NULL){
+                int x = auxNodo->x;
+                int y = auxNodo->y;
+                int R = 255 - auxNodo->R;
+                int G = 255 - auxNodo->G;
+                int B = 255 - auxNodo->B;
+
+                copiaMatriz->insertar(x,y,R,G,B);
+                auxNodo =  auxNodo->derecha;
+            }
+            auxLateral = auxLateral->abajo;
+        }
+
+        imagen::listaFiltros->insertarCapa(copiaMatriz,valorCopia,nombreCopia);
+        cout<<"Termino la primera insercion"<<endl;
+        aux = aux -> siguiente;
     }
+
 }
 
-void imagen::mostrarCopia(){
-    capa* aux = imagen::copiaInicio;
+void imagen::terminarFiltros(){
+    imagen::listaFiltros->inicio = NULL;
+    imagen::listaFiltros->fin = NULL;
+}
+
+void imagen::filtroGrises(){
+    capa* aux = imagen::inicio;
+
+    imagen::listaFiltros->insertar("EscalaGrises");
 
     while(aux!=NULL){
-    aux->matriz->mostrarDatos();
-    aux = aux ->siguiente;
+        //Extraer valores que iran en la capa
+        matrizDispersa* copiaMatriz = new matrizDispersa();
+        int valorCopia = aux->z;
+        string nombreCopia = aux->nombre;
+
+        //Llenar la matriz nueva con el filtro aplicado
+        nodoLateral* auxLateral = aux->matriz->indiceY->inicio;
+
+        while(auxLateral!=NULL){
+            nodo* auxNodo = auxLateral->fil->inicio;
+
+            while(auxNodo!=NULL){
+                int x = auxNodo->x;
+                int y = auxNodo->y;
+                int R = auxNodo->R;
+                int G = auxNodo->G;
+                int B = auxNodo->B;
+                int gris = (R+G+B)/3;
+
+                copiaMatriz->insertar(x,y,gris,gris,gris);
+                auxNodo =  auxNodo->derecha;
+            }
+            auxLateral = auxLateral->abajo;
+        }
+
+        imagen::listaFiltros->insertarCapa(copiaMatriz,valorCopia,nombreCopia);
+        cout<<"Termino la primera insercion"<<endl;
+        aux = aux -> siguiente;
     }
 }
-
-

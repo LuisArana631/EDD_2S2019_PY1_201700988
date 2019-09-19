@@ -80,8 +80,10 @@ void menu(){
             if(trabajo!=NULL){
                 menuFiltros();
             }else{
-                selectImage();
-                menuFiltros();
+                cout<<"No has seleccionado una imagen."<<endl;
+                cout<<"----------------------------------------------"<<endl;
+                cout<<"Pulsa una tecla para continuar."<<endl;
+                getch();
             }
             menu();
             break;
@@ -553,9 +555,19 @@ void menuReportes(){
         case 5:
             //Filters report
             if(trabajo!=NULL){
-                    if(trabajo->listaFiltros!=NULL){
-                        trabajo->listaFiltros->graficar();
-                    }
+                if(trabajo->listaFiltros->inicio!=NULL){
+                    trabajo->listaFiltros->graficar();
+                }else{
+                    cout<<"No hay filtros aplicados"<<endl;
+                    cout<<"----------------------------------------------"<<endl;
+                    cout<<"Pulsa una tecla para continuar..."<<endl;
+                    getch();
+                }
+            }else{
+                cout<<"No has seleccionado imagen"<<endl;
+                cout<<"----------------------------------------------"<<endl;
+                        cout<<"Pulsa una tecla para continuar..."<<endl;
+                        getch();
             }
 
             break;
@@ -640,8 +652,9 @@ void selectImage(){
     string Opcion = "";
     bool opcionValida = false;
 
-    if(trabajo!=NULL)
-        trabajo->terminarCopia();
+    if(trabajo!=NULL){
+        trabajo->terminarFiltros();
+    }
 
     while(!opcionValida){
         try{
@@ -733,7 +746,11 @@ void selectCapa(){
 
     int capaSelect = atoi(Opcion.c_str());
 
-    capaTrabajar = trabajo->extraerCapa(capaSelect);
+    if(trabajo->listaFiltros->inicio!=NULL){
+        capaTrabajar = trabajo->listaFiltros->fin->extraerCapa(capaSelect);
+    }else{
+        capaTrabajar = trabajo->extraerCapa(capaSelect);
+    }
 
     if(capaTrabajar==NULL){
         cout<<"---------------Opcion no existe---------------"<<endl;
@@ -818,7 +835,7 @@ void linearReport(){
 
 void exportImage(){
     if(trabajo!=NULL){
-        string dirCarpeta = "C:\\Users\\luara\\Desktop\\Exports";
+        string dirCarpeta = "C:\\Users\\Luis Fer\\Desktop\\Exports";
         mkdir(dirCarpeta.c_str());
         dirCarpeta = dirCarpeta + "\\" + trabajo->id;
         mkdir(dirCarpeta.c_str());
@@ -883,14 +900,10 @@ void menuFiltros(){
         case 1:
             //Negative
             aplicacion = aplicarFiltro();
-            trabajo->inicializarCopia();
             if(aplicacion == 1){
-                trabajo->filtroNegativoImg();
-                trabajo->listaFiltros->insertar("Negative");
-                trabajo->mostrarCopia();
+                trabajo->filtroNegativo();
             }else{
-                selectCapa();
-                capaTrabajar->matriz->filtroNegativo();
+
             }
             cout<<"----------------------------------------------"<<endl;
             cout<<"---------------Filtro aplicado----------------"<<endl;
@@ -900,7 +913,17 @@ void menuFiltros(){
             break;
         case 2:
             //Grayscale
+            aplicacion = aplicarFiltro();
+            if(aplicacion == 1){
+                trabajo->filtroGrises();
+            }else{
 
+            }
+            cout<<"----------------------------------------------"<<endl;
+            cout<<"---------------Filtro aplicado----------------"<<endl;
+            cout<<"----------------------------------------------"<<endl;
+            cout<<"Pulsa una tecla para continuar."<<endl;
+            getch();
             break;
         case 3:
             //Mirror

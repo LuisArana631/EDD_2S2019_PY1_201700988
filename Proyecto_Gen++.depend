@@ -28,7 +28,7 @@
 	<stdlib.h>
 	"matrizDispersa.h"
 
-1568339645 e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\matrizdispersa.h
+1568851535 e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\matrizdispersa.h
 	<iostream>
 	<stdlib.h>
 	<fstream>
@@ -57,21 +57,22 @@
 1567879975 source:e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\fila.cpp
 	"fila.h"
 
-1568595469 source:e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\imagen.cpp
+1568859809 source:e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\imagen.cpp
 	"imagen.h"
 
-1568318643 e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\imagen.h
+1568858903 e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\imagen.h
 	<iostream>
 	<fstream>
 	<direct.h>
 	<stdlib.h>
 	<string.h>
 	"capa.h"
+	"filtro.h"
 
 1567995168 source:e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\lateral.cpp
 	"lateral.h"
 
-1568385487 source:e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\main.cpp
+1568859710 source:e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\main.cpp
 	<iostream>
 	<stdlib.h>
 	<string.h>
@@ -88,7 +89,7 @@
 	<string.h>
 	"imagen.h"
 
-1568338687 source:e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\matrizdispersa.cpp
+1568851540 source:e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\matrizdispersa.cpp
 	"matrizDispersa.h"
 
 1567562292 source:e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\nodo.cpp
@@ -348,4 +349,23 @@
 	"matrizDispersa.h"
 	"imagen.h"
 	"nodoABB.h"
+
+1568855763 e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\filtro.h
+	<stdlib.h>
+	<iostream>
+	<fstream>
+	<string.h>
+	"nodoFiltro.h"
+
+1568852863 e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\nodofiltro.h
+	<iostream>
+	<stdlib.h>
+	<string.h>
+	"capa.h"
+
+1568855777 source:e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\filtro.cpp
+	"filtro.h"
+
+1568852948 source:e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\nodofiltro.cpp
+	"nodoFiltro.h"
 

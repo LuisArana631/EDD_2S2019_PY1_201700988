@@ -21,7 +21,6 @@ public:
     filtro* listaFiltros;
     capa* inicio;
     capa* fin;
-    capa* copiaInicio;
 
     imagen(string, int, int, int, int);
     bool vacia();
@@ -31,10 +30,9 @@ public:
     capa* extraerCapa(int);
     void crearHTML(string);
     void crearCSSOriginal(string);
-    void inicializarCopia();
-    void terminarCopia();
-    void filtroNegativoImg();
-    void mostrarCopia();
+    void terminarFiltros();
+    void filtroNegativo();
+    void filtroGrises();
 };
 
 #endif // IMAGEN_H

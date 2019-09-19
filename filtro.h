@@ -15,4 +15,5 @@ public:
     bool vacia();
     void insertar(string);
     void graficar();
+    void insertarCapa(matrizDispersa*, int, string);
 };

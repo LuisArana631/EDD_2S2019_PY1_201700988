@@ -50,18 +50,22 @@ void filtro::graficar(){
         aux = filtro::fin;
         while(aux!=NULL){
             archivo<<aux->nameFiltro;
-            if (aux->siguiente!=NULL)
+            if (aux->anterior!=NULL)
                 archivo<<" -> ";
             aux = aux -> anterior;
         }
         archivo<<";"<<endl;
 
-        archivo<<filtro::inicio->nameFiltro<<" -> "<<filtro::fin->nameFiltro<<endl;
-        archivo<<filtro::fin->nameFiltro<<" -> "<<filtro::inicio->nameFiltro<<endl;
+        archivo<<filtro::inicio->nameFiltro<<" -> "<<filtro::fin->nameFiltro<<";"<<endl;
+        archivo<<filtro::fin->nameFiltro<<" -> "<<filtro::inicio->nameFiltro<<";"<<endl;
 
         archivo<<"}"<<endl;
 
         system("dot -Tpng Filtros.dot -o Filtros.png");
         system("Filtros.png");
     }
+}
+
+void filtro::insertarCapa(matrizDispersa* insertar, int val, string nombre){
+    filtro::fin->insertarFiltro(insertar,val,nombre);
 }

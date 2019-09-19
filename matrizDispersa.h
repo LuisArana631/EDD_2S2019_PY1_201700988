@@ -21,8 +21,6 @@ public:
     void linealizarFilas();
     void linealizarColumnas();
     void pintarCuadro(string, int);
-    void filtroNegativo();
-    void mostrarDatos();
 };
 
 #endif // MATRIZDISPERSA_H
