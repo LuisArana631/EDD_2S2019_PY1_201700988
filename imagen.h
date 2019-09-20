@@ -35,6 +35,9 @@ public:
     void filtroGrises();
     void filtroNegativoCapa(int);
     void filtroGrisesCapa(int);
+    void filtroXmirror();
+    void filtroYmirror();
+    void filtroXYmirror();
 };
 
 #endif // IMAGEN_H

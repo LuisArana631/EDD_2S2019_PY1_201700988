@@ -104,36 +104,36 @@
 1568385229 source:e:\cursos_usac\estructuras_datos\proyecto1_201700988\proyecto_gen++\nodoabb.cpp
 	"nodoABB.h"
 
-1568602734 source:c:\users\luara\desktop\edd_2s2019_py1_201700988\cabecera.cpp
+1568867369 source:c:\users\luara\desktop\edd_2s2019_py1_201700988\cabecera.cpp
 	"cabecera.h"
 
-1568602734 c:\users\luara\desktop\edd_2s2019_py1_201700988\cabecera.h
+1568867369 c:\users\luara\desktop\edd_2s2019_py1_201700988\cabecera.h
 	<iostream>
 	<fstream>
 	<stdlib.h>
 	"nodoCabecera.h"
 
-1568602734 c:\users\luara\desktop\edd_2s2019_py1_201700988\nodocabecera.h
+1568867369 c:\users\luara\desktop\edd_2s2019_py1_201700988\nodocabecera.h
 	<stdlib.h>
 	"columna.h"
 
-1568602734 c:\users\luara\desktop\edd_2s2019_py1_201700988\columna.h
+1568867369 c:\users\luara\desktop\edd_2s2019_py1_201700988\columna.h
 	<iostream>
 	<stdlib.h>
 	"nodo.h"
 
-1568691938 c:\users\luara\desktop\edd_2s2019_py1_201700988\nodo.h
+1568867369 c:\users\luara\desktop\edd_2s2019_py1_201700988\nodo.h
 	<stdlib.h>
 
-1568602734 source:c:\users\luara\desktop\edd_2s2019_py1_201700988\capa.cpp
+1568867369 source:c:\users\luara\desktop\edd_2s2019_py1_201700988\capa.cpp
 	"capa.h"
 
-1568602734 c:\users\luara\desktop\edd_2s2019_py1_201700988\capa.h
+1568867369 c:\users\luara\desktop\edd_2s2019_py1_201700988\capa.h
 	<iostream>
 	<stdlib.h>
 	"matrizDispersa.h"
 
-1568696173 c:\users\luara\desktop\edd_2s2019_py1_201700988\matrizdispersa.h
+1568867369 c:\users\luara\desktop\edd_2s2019_py1_201700988\matrizdispersa.h
 	<iostream>
 	<stdlib.h>
 	<fstream>
@@ -141,46 +141,47 @@
 	"cabecera.h"
 	"lateral.h"
 
-1568602734 c:\users\luara\desktop\edd_2s2019_py1_201700988\lateral.h
+1568867369 c:\users\luara\desktop\edd_2s2019_py1_201700988\lateral.h
 	<iostream>
 	<fstream>
 	<stdlib.h>
 	"nodoLateral.h"
 
-1568602734 c:\users\luara\desktop\edd_2s2019_py1_201700988\nodolateral.h
+1568867369 c:\users\luara\desktop\edd_2s2019_py1_201700988\nodolateral.h
 	<stdlib.h>
 	"fila.h"
 
-1568602734 c:\users\luara\desktop\edd_2s2019_py1_201700988\fila.h
+1568867369 c:\users\luara\desktop\edd_2s2019_py1_201700988\fila.h
 	<stdlib.h>
 	<iostream>
 	"nodo.h"
 
-1568602734 source:c:\users\luara\desktop\edd_2s2019_py1_201700988\columna.cpp
+1568867369 source:c:\users\luara\desktop\edd_2s2019_py1_201700988\columna.cpp
 	"columna.h"
 
-1568602734 source:c:\users\luara\desktop\edd_2s2019_py1_201700988\fila.cpp
+1568867369 source:c:\users\luara\desktop\edd_2s2019_py1_201700988\fila.cpp
 	"fila.h"
 
-1568684881 source:c:\users\luara\desktop\edd_2s2019_py1_201700988\filtro.cpp
+1568867369 source:c:\users\luara\desktop\edd_2s2019_py1_201700988\filtro.cpp
 	"filtro.h"
 
-1568678605 c:\users\luara\desktop\edd_2s2019_py1_201700988\filtro.h
+1568867369 c:\users\luara\desktop\edd_2s2019_py1_201700988\filtro.h
 	<stdlib.h>
 	<iostream>
 	<fstream>
 	<string.h>
 	"nodoFiltro.h"
 
-1568603329 c:\users\luara\desktop\edd_2s2019_py1_201700988\nodofiltro.h
+1568867369 c:\users\luara\desktop\edd_2s2019_py1_201700988\nodofiltro.h
 	<iostream>
 	<stdlib.h>
 	<string.h>
+	"capa.h"
 
-1568696281 source:c:\users\luara\desktop\edd_2s2019_py1_201700988\imagen.cpp
+1568987059 source:c:\users\luara\desktop\edd_2s2019_py1_201700988\imagen.cpp
 	"imagen.h"
 
-1568696160 c:\users\luara\desktop\edd_2s2019_py1_201700988\imagen.h
+1568986946 c:\users\luara\desktop\edd_2s2019_py1_201700988\imagen.h
 	<iostream>
 	<fstream>
 	<direct.h>
@@ -189,10 +190,10 @@
 	"capa.h"
 	"filtro.h"
 
-1568602734 source:c:\users\luara\desktop\edd_2s2019_py1_201700988\lateral.cpp
+1568867369 source:c:\users\luara\desktop\edd_2s2019_py1_201700988\lateral.cpp
 	"lateral.h"
 
-1568692654 source:c:\users\luara\desktop\edd_2s2019_py1_201700988\main.cpp
+1568986906 source:c:\users\luara\desktop\edd_2s2019_py1_201700988\main.cpp
 	<iostream>
 	<stdlib.h>
 	<string.h>
@@ -203,28 +204,28 @@
 	"imagen.h"
 	"nodoABB.h"
 
-1568602734 c:\users\luara\desktop\edd_2s2019_py1_201700988\nodoabb.h
+1568867369 c:\users\luara\desktop\edd_2s2019_py1_201700988\nodoabb.h
 	<iostream>
 	<stdlib.h>
 	<string.h>
 	"imagen.h"
 
-1568696271 source:c:\users\luara\desktop\edd_2s2019_py1_201700988\matrizdispersa.cpp
+1568867369 source:c:\users\luara\desktop\edd_2s2019_py1_201700988\matrizdispersa.cpp
 	"matrizDispersa.h"
 
-1568602734 source:c:\users\luara\desktop\edd_2s2019_py1_201700988\nodo.cpp
+1568867369 source:c:\users\luara\desktop\edd_2s2019_py1_201700988\nodo.cpp
 	"nodo.h"
 
-1568602734 source:c:\users\luara\desktop\edd_2s2019_py1_201700988\nodoabb.cpp
+1568867369 source:c:\users\luara\desktop\edd_2s2019_py1_201700988\nodoabb.cpp
 	"nodoABB.h"
 
-1568602734 source:c:\users\luara\desktop\edd_2s2019_py1_201700988\nodocabecera.cpp
+1568867369 source:c:\users\luara\desktop\edd_2s2019_py1_201700988\nodocabecera.cpp
 	"nodoCabecera.h"
 
-1568602734 source:c:\users\luara\desktop\edd_2s2019_py1_201700988\nodolateral.cpp
+1568867369 source:c:\users\luara\desktop\edd_2s2019_py1_201700988\nodolateral.cpp
 	"nodoLateral.h"
 
-1568658189 source:c:\users\luara\desktop\edd_2s2019_py1_201700988\nodofiltro.cpp
+1568867369 source:c:\users\luara\desktop\edd_2s2019_py1_201700988\nodofiltro.cpp
 	"nodoFiltro.h"
 
 1568670891 source:c:\users\luis fer\desktop\edd_2s2019_py1_201700988\cabecera.cpp

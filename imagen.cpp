@@ -266,7 +266,6 @@ void imagen::filtroGrises(){
         }
 
         imagen::listaFiltros->insertarCapa(copiaMatriz,valorCopia,nombreCopia);
-        cout<<"Termino la primera insercion"<<endl;
         aux = aux -> siguiente;
     }
 }
@@ -402,5 +401,144 @@ void imagen::filtroGrisesCapa(int z){
     }
 }
 
+void imagen::filtroYmirror(){
+    capa* aux = imagen::inicio;
+
+    imagen::listaFiltros->insertar("YMirror");
+
+    int yMax = 0;
+    while(aux!=NULL){
+        if(aux->matriz->indiceY->maximoY() > yMax)
+            yMax = aux->matriz->indiceY->maximoY();
+
+        aux = aux -> siguiente;
+    }
+
+    yMax++;
+
+    aux = imagen::inicio;
+    while(aux!=NULL){
+        //Extraer valores que iran en la capa
+        matrizDispersa* copiaMatriz = new matrizDispersa();
+        int valorCopia = aux->z;
+        string nombreCopia = aux->nombre;
+
+        //Llenar la matriz nueva con el filtro aplicado
+        nodoLateral* auxInicio = aux->matriz->indiceY->inicio;
+        while(auxInicio!=NULL){
+            nodo* auxNodo = auxInicio->fil->inicio;
+
+            while(auxNodo!=NULL){
+                int x = auxNodo->x;
+                int y = yMax - auxNodo->y;
+                int R = auxNodo->R;
+                int G = auxNodo->G;
+                int B = auxNodo->B;
+
+                copiaMatriz->insertar(x,y,R,G,B);
+                auxNodo =  auxNodo->derecha;
+            }
+            auxInicio = auxInicio->abajo;
+        }
+
+        imagen::listaFiltros->insertarCapa(copiaMatriz,valorCopia,nombreCopia);
+        aux = aux -> siguiente;
+    }
+}
+
+void imagen::filtroXmirror(){
+    capa* aux = imagen::inicio;
+
+    imagen::listaFiltros->insertar("XMirror");
+
+    int xMax = 0;
+    while(aux!=NULL){
+        if(aux->matriz->indiceX->maximoX() > xMax)
+            xMax = aux->matriz->indiceX->maximoX();
+
+        aux = aux -> siguiente;
+    }
+
+    xMax++;
+
+    aux = imagen::inicio;
+    while(aux!=NULL){
+        //Extraer valores que iran en la capa
+        matrizDispersa* copiaMatriz = new matrizDispersa();
+        int valorCopia = aux->z;
+        string nombreCopia = aux->nombre;
+
+        //Llenar la matriz nueva con el filtro aplicado
+        nodoCabecera* auxInicio = aux->matriz->indiceX->inicio;
+        while(auxInicio!=NULL){
+            nodo* auxNodo = auxInicio->col->inicio;
+
+            while(auxNodo!=NULL){
+                int x = xMax - auxNodo->x;
+                int y = auxNodo->y;
+                int R = auxNodo->R;
+                int G = auxNodo->G;
+                int B = auxNodo->B;
+
+                copiaMatriz->insertar(x,y,R,G,B);
+                auxNodo =  auxNodo->abajo;
+            }
+            auxInicio = auxInicio->siguiente;
+        }
+
+        imagen::listaFiltros->insertarCapa(copiaMatriz,valorCopia,nombreCopia);
+        aux = aux -> siguiente;
+    }
+}
+
+void imagen::filtroXYmirror(){
+    capa* aux = imagen::inicio;
+
+    imagen::listaFiltros->insertar("XMirror");
+
+    int xMax = 0;
+    int yMax = 0;
+    while(aux!=NULL){
+        if(aux->matriz->indiceX->maximoX() > xMax)
+            xMax = aux->matriz->indiceX->maximoX();
+
+        if(aux->matriz->indiceY->maximoY() > yMax)
+            yMax = aux->matriz->indiceY->maximoY();
+
+        aux = aux -> siguiente;
+    }
+
+    xMax++;
+    yMax++;
+
+    aux = imagen::inicio;
+    while(aux!=NULL){
+        //Extraer valores que iran en la capa
+        matrizDispersa* copiaMatriz = new matrizDispersa();
+        int valorCopia = aux->z;
+        string nombreCopia = aux->nombre;
+
+        //Llenar la matriz nueva con el filtro aplicado
+        nodoCabecera* auxInicio = aux->matriz->indiceX->inicio;
+        while(auxInicio!=NULL){
+            nodo* auxNodo = auxInicio->col->inicio;
+
+            while(auxNodo!=NULL){
+                int x = xMax - auxNodo->x;
+                int y = yMax - auxNodo->y;
+                int R = auxNodo->R;
+                int G = auxNodo->G;
+                int B = auxNodo->B;
+
+                copiaMatriz->insertar(x,y,R,G,B);
+                auxNodo =  auxNodo->abajo;
+            }
+            auxInicio = auxInicio->siguiente;
+        }
+
+        imagen::listaFiltros->insertarCapa(copiaMatriz,valorCopia,nombreCopia);
+        aux = aux -> siguiente;
+    }
+}
 
 

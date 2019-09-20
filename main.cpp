@@ -24,6 +24,7 @@ void exportImage();
 void menuFiltros();
 int aplicarFiltro();
 int numCapa();
+void mirrorMenu();
 
 //Estructuras globales
 nodoABB* arbolImagenes;
@@ -90,7 +91,7 @@ void menu(){
             break;
         case 4:
             //Manual editing
-
+            return;
             break;
         case  5:
             //Export image
@@ -836,7 +837,7 @@ void linearReport(){
 
 void exportImage(){
     if(trabajo!=NULL){
-        string dirCarpeta = "C:\\Users\\Luis Fer\\Desktop\\Exports";
+        string dirCarpeta = "C:\\Users\\luara\\Desktop\\Exports";
         mkdir(dirCarpeta.c_str());
         dirCarpeta = dirCarpeta + "\\" + trabajo->id;
         mkdir(dirCarpeta.c_str());
@@ -931,7 +932,14 @@ void menuFiltros(){
             break;
         case 3:
             //Mirror
-
+            if(trabajo!=NULL){
+                mirrorMenu();
+            }else{
+                cout<<"No has cargado imagenes."<<endl;
+                cout<<"----------------------------------------------"<<endl;
+                cout<<"Pulsa una tecla para continuar."<<endl;
+                getch();
+            }
             break;
         case 4:
             //Collage
@@ -1018,3 +1026,73 @@ int numCapa(){
 
     return OpcionEntera;
 }
+
+void mirrorMenu(){
+    string Opcion;
+    bool valido = false;
+
+    while(valido!=true){
+        try{
+            cout<<"----------------------------------------------"<<endl;
+            cout<<"1 - X-Mirror"<<endl;
+            cout<<"2 - Y-Mirror"<<endl;
+            cout<<"3 - Double Mirror"<<endl;
+            cout<<"4 - Return"<<endl;
+            cout<<"----------------------------------------------"<<endl;
+            cout<<"Opcion: ";
+            getline(cin,Opcion);
+            valido = validarEntrada(Opcion);
+            cout<<"----------------------------------------------"<<endl;
+            if(!valido)
+                throw Opcion;
+        }catch (string e){
+            cout<<"---------------Opcion no existe---------------"<<endl;
+            cout<<"----------------------------------------------"<<endl;
+            Sleep(500);
+        }
+    }
+
+    int OpcionEntera = atoi(Opcion.c_str());
+    switch(OpcionEntera){
+        case 1:
+            //X mirror
+            trabajo->filtroXmirror();
+            cout<<"----------------------------------------------"<<endl;
+            cout<<"---------------Filtro aplicado----------------"<<endl;
+            cout<<"----------------------------------------------"<<endl;
+            cout<<"Pulsa una tecla para continuar."<<endl;
+            getch();
+            break;
+        case 2:
+            //Y mirror
+            trabajo->filtroYmirror();
+            cout<<"----------------------------------------------"<<endl;
+            cout<<"---------------Filtro aplicado----------------"<<endl;
+            cout<<"----------------------------------------------"<<endl;
+            cout<<"Pulsa una tecla para continuar."<<endl;
+            getch();
+            break;
+        case 3:
+            //Double mirror
+            trabajo->filtroXYmirror();
+            cout<<"----------------------------------------------"<<endl;
+            cout<<"---------------Filtro aplicado----------------"<<endl;
+            cout<<"----------------------------------------------"<<endl;
+            cout<<"Pulsa una tecla para continuar."<<endl;
+            getch();
+            break;
+        case 4:
+            //Return
+            return;
+            break;
+        default:
+            //Cuando es un numero incorrecto
+            cout<<"---------------Opcion no existe---------------"<<endl;
+            cout<<"----------------------------------------------"<<endl;
+            Sleep(500);
+            break;
+
+    }
+
+}
+
