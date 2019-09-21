@@ -21,6 +21,7 @@ public:
     void linealizarFilas();
     void linealizarColumnas();
     void pintarCuadro(string, int);
+    void pintarMosaic(string, int);
 };
 
 #endif // MATRIZDISPERSA_H

@@ -837,12 +837,19 @@ void linearReport(){
 
 void exportImage(){
     if(trabajo!=NULL){
-        string dirCarpeta = "C:\\Users\\luara\\Desktop\\Exports";
+        string dirCarpeta = "C:\\Users\\Luis Fer\\Desktop\\Exports";
         mkdir(dirCarpeta.c_str());
         dirCarpeta = dirCarpeta + "\\" + trabajo->id;
         mkdir(dirCarpeta.c_str());
-        trabajo->crearHTML(dirCarpeta);
-        trabajo->crearCSSOriginal(dirCarpeta);
+        if(trabajo->listaFiltros->fin->nameFiltro == "Mosaic"){
+            trabajo->crearHTMLmosaic(dirCarpeta);
+            trabajo->crearCSSmosaic(dirCarpeta);
+        }else if(trabajo->listaFiltros->fin->nameFiltro == "Collage"){
+
+        }else{
+            trabajo->crearHTML(dirCarpeta);
+            trabajo->crearCSSOriginal(dirCarpeta);
+        }
         dirCarpeta = dirCarpeta + "\\" + trabajo->id + ".html";
         dirCarpeta = "start \"\" \"" + dirCarpeta +"\"";
         cout<<"Dir: "<<dirCarpeta<<endl;
@@ -943,11 +950,27 @@ void menuFiltros(){
             break;
         case 4:
             //Collage
-
+            if(trabajo!=NULL){
+                trabajo->listaFiltros->insertar("Collage");
+                cout<<"Filtro aplicado exitosamente."<<endl;
+            }else{
+                cout<<"No has cargado imagenes."<<endl;
+            }
+            cout<<"----------------------------------------------"<<endl;
+            cout<<"Pulsa una tecla para continuar."<<endl;
+            getch();
             break;
         case 5:
             //Mosaic
-
+            if(trabajo!=NULL){
+                trabajo->listaFiltros->insertar("Mosaic");
+                cout<<"Filtro aplicado exitosamente."<<endl;
+            }else{
+                cout<<"No has cargado imagenes."<<endl;
+            }
+            cout<<"----------------------------------------------"<<endl;
+            cout<<"Pulsa una tecla para continuar."<<endl;
+            getch();
             break;
         case 6:
             //Return
