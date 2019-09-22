@@ -223,3 +223,13 @@ void matrizDispersa::pintarMosaic(string dir, int maxX){
 
     archivo.close();
 }
+
+
+
+
+
+
+
+
+
+

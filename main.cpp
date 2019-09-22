@@ -30,6 +30,8 @@ void mirrorMenu();
 nodoABB* arbolImagenes;
 imagen* trabajo = NULL;
 capa* capaTrabajar;
+int Rx = 0;
+int Ry = 0;
 
 void menu(){
     string Opcion;
@@ -837,19 +839,14 @@ void linearReport(){
 
 void exportImage(){
     if(trabajo!=NULL){
-        string dirCarpeta = "C:\\Users\\Luis Fer\\Desktop\\Exports";
+        string dirCarpeta = "C:\\Users\\luara\\Desktop\\Exports";
         mkdir(dirCarpeta.c_str());
         dirCarpeta = dirCarpeta + "\\" + trabajo->id;
         mkdir(dirCarpeta.c_str());
-        if(trabajo->listaFiltros->fin->nameFiltro == "Mosaic"){
-            trabajo->crearHTMLmosaic(dirCarpeta);
-            trabajo->crearCSSmosaic(dirCarpeta);
-        }else if(trabajo->listaFiltros->fin->nameFiltro == "Collage"){
 
-        }else{
-            trabajo->crearHTML(dirCarpeta);
-            trabajo->crearCSSOriginal(dirCarpeta);
-        }
+        trabajo->crearHTML(dirCarpeta);
+        trabajo->crearCSSOriginal(dirCarpeta);
+
         dirCarpeta = dirCarpeta + "\\" + trabajo->id + ".html";
         dirCarpeta = "start \"\" \"" + dirCarpeta +"\"";
         cout<<"Dir: "<<dirCarpeta<<endl;
@@ -1118,4 +1115,7 @@ void mirrorMenu(){
     }
 
 }
+
+
+
 

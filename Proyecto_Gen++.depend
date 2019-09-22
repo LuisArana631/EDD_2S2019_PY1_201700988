@@ -133,7 +133,7 @@
 	<stdlib.h>
 	"matrizDispersa.h"
 
-1568867369 c:\users\luara\desktop\edd_2s2019_py1_201700988\matrizdispersa.h
+1569107114 c:\users\luara\desktop\edd_2s2019_py1_201700988\matrizdispersa.h
 	<iostream>
 	<stdlib.h>
 	<fstream>
@@ -178,10 +178,10 @@
 	<string.h>
 	"capa.h"
 
-1568987059 source:c:\users\luara\desktop\edd_2s2019_py1_201700988\imagen.cpp
+1569110447 source:c:\users\luara\desktop\edd_2s2019_py1_201700988\imagen.cpp
 	"imagen.h"
 
-1568986946 c:\users\luara\desktop\edd_2s2019_py1_201700988\imagen.h
+1569110085 c:\users\luara\desktop\edd_2s2019_py1_201700988\imagen.h
 	<iostream>
 	<fstream>
 	<direct.h>
@@ -193,7 +193,7 @@
 1568867369 source:c:\users\luara\desktop\edd_2s2019_py1_201700988\lateral.cpp
 	"lateral.h"
 
-1568986906 source:c:\users\luara\desktop\edd_2s2019_py1_201700988\main.cpp
+1569124666 source:c:\users\luara\desktop\edd_2s2019_py1_201700988\main.cpp
 	<iostream>
 	<stdlib.h>
 	<string.h>
@@ -210,7 +210,7 @@
 	<string.h>
 	"imagen.h"
 
-1568867369 source:c:\users\luara\desktop\edd_2s2019_py1_201700988\matrizdispersa.cpp
+1569109537 source:c:\users\luara\desktop\edd_2s2019_py1_201700988\matrizdispersa.cpp
 	"matrizDispersa.h"
 
 1568867369 source:c:\users\luara\desktop\edd_2s2019_py1_201700988\nodo.cpp

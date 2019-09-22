@@ -40,6 +40,8 @@ public:
     void filtroXYmirror();
     void crearHTMLmosaic(string);
     void crearCSSmosaic(string);
+    void crearHTMLcollage(string, int, int);
+    void crearCSScollage(string, int, int);
 };
 
 #endif // IMAGEN_H
